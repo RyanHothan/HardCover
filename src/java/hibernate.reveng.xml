@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="HardCover" match-schema="dbo"/>
+  <table-filter match-name="Person"/>
+  <table-filter match-name="BookFileType"/>
+  <table-filter match-name="Book"/>
+  <table-filter match-name="ReservedBook"/>
+  <table-filter match-name="RegisteredUser"/>
+  <table-filter match-name="CheckedOutBook"/>
+  <table-filter match-name="Author"/>
+  <table-filter match-name="Genre"/>
+</hibernate-reverse-engineering>

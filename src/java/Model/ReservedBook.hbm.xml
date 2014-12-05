@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Dec 5, 2014 5:29:39 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Model.ReservedBook" table="ReservedBook" schema="dbo" catalog="HardCover" optimistic-lock="version">
+        <id name="reservedBookId" type="int">
+            <column name="ReservedBookId" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="book" class="Model.Book" fetch="select">
+            <column name="BookId" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="registeredUser" class="Model.RegisteredUser" fetch="select">
+            <column name="RegisteredUserId" length="36" not-null="true" />
+        </many-to-one>
+        <property name="reserveDate" type="timestamp">
+            <column name="ReserveDate" length="23" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
