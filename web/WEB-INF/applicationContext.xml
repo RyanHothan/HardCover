@@ -21,5 +21,37 @@
     p:password="${jdbc.password}" /-->
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
+    
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager">
+        
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDrive">
+                <property name="url" value = "jdbc:sqlserver://localhost\JAVIER-PC\SQLEXPRESS:1433;databaseName=HardCover" />
+                <property name="username" value="sa"/>
+            <property name="password" value="nopw">
+        </bean>
+        
+        <bean id="sessionFactory"
+            class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
+              p:dataSource-ref="dataSource">
+            <property name="annotatedClasses">
+                <list>
+                    <value>
+                        model.RegisteredUser
+                    </value>
+                </list>
+            </property>
+            <property name="hibernateProperties">
+                <props>
+                    <prop key="hibernate.dialect">
+                        org.hibernate.dialect.SQLServerDialect
+                    </prop>
+                </props>
+            </property>
+        </bean>
+        
 
 </beans>

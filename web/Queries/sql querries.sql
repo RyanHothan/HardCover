@@ -22,6 +22,7 @@ Cover VARCHAR(200) NOT NULL,
 DateAdded DATETIME NOT NULL,
 NumCopies INT NOT NULL,
 TimesBorrowed INT NOT NULL DEFAULT 0,
+Language VARCHAR(30),
 PRIMARY KEY(Bookuuid)
 );
 
