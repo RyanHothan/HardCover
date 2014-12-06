@@ -1,7 +1,7 @@
 jQuery(function($) {
     
     $.ajax({
-        url: '/sHardCover/HomePageBooksServlet',
+        url: '/HardCover/HomePageBooksServlet',
         type: 'GET',
         dataType: 'JSON',
         data:{},

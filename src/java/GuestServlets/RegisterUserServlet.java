@@ -44,9 +44,9 @@ public class RegisterUserServlet extends HttpServlet
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String libraryCardNum = request.getParameter("libraryCardNum");
-        
-       String hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
-       password = hashed;
+
+        String hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
+        password = hashed;
 
         try
         {
@@ -55,10 +55,9 @@ public class RegisterUserServlet extends HttpServlet
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
 
             Statement st = con.createStatement();
-            
-            
-            String query = "INSERT INTO [MatchesFromAbove].[dbo].[Person] " + 
-                    "VALUES(DEFAULT, '" + email + "' , '" + password + "' , '" + firstName + "' , '" + lastName + "' , 0);";  
+
+            String query = "INSERT INTO [MatchesFromAbove].[dbo].[Person] "
+                    + "VALUES(DEFAULT, '" + email + "' , '" + password + "' , '" + firstName + "' , '" + lastName + "' , 0);";
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
