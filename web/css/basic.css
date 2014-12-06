@@ -9,6 +9,8 @@
  */
 
 #basic-modal-content {display:none;}
+#basic-modal-register {display:none;}
+#registerUserButton{float:right;}
 
 #basic-modal-content-return {display:none;}
 #change-password-modal{display:none;}

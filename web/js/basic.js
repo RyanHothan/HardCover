@@ -18,10 +18,24 @@ jQuery(function ($) {
 
 		return false;
 	});
-	
-	$('.thumbnail .basic').click(function (e) {
+        
+        $('.thumbnail .basic').click(function (e) {
 		$('#basic-modal-content-return').modal({overlayClose:true});
 
 		return false;
 	});
+        
+        $('#registerButton').click(function (e) {
+		$('#basic-modal-register').modal({overlayClose:true});
+
+		return false;
+	});
+        
+        $('#registerButton').click(function (e) {
+		$('#basic-modal-register-return').modal({overlayClose:true});
+
+		return false;
+	});
+	
+	
 });
