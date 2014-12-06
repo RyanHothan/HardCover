@@ -94,13 +94,6 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="jumbotron">
-            <h1>HardCover eLibrary Solutions</h1>
-            <p>Cat ipsum dolor sit amet, why must they do that. Hunt anything that moves.
-              Throwup on your pillow. Hide when guests come over flop over stick butt
-              in face rub face on everything, or stretch. All of a sudden cat goes crazy
-              cat snacks.</p>
-          </div>
         </div>
       </div>
     </div>
@@ -155,57 +148,11 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <a href='#' class='basic'>
-            <img src="http://placekitten.com/g/180/270" class="img-responsive">
-			</a>
-              <div class="caption">
-                <h3>Title</h3>
-                <p>Author Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <a href='#' class='basic'>
-            <img src="http://placekitten.com/g/180/270" class="img-responsive">
-			</a>
-              <div class="caption">
-                <h3>Title</h3>
-                <p>Author Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <a href='#' class='basic'>
-            <img src="http://placekitten.com/g/180/270" class="img-responsive">
-			</a>
-              <div class="caption">
-                <h3>Title</h3>
-                <p>Author Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <a href='#' class='basic'>
-            <img src="http://placekitten.com/g/180/270" class="img-responsive">
-			</a>
-              <div class="caption">
-                <h3>Title</h3>
-                <p>Author Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="row" draggable="true">
+                    <div class="row" draggable="true">
             <div class="col-md-3 pull-right">
               <a class="btn btn-lg btn-primary">View More</a>
             </div>
           </div>
-        </div>
       </div>
     </div>
     <div class="container">
@@ -253,49 +200,11 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <img src="http://placehold.it/180x270" class="img-responsive">
-              <div class="caption">
-                <h3>Title</h3>
-                <p>Author Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <img src="http://placehold.it/180x270" class="img-responsive">
-              <div class="caption">
-                <h3>Title</h3>
-                <p>Author Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <img src="http://placehold.it/180x270" class="img-responsive">
-              <div class="caption">
-                <h3>Title</h3>
-                <p>Author Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="thumbnail">
-              <img src="http://placehold.it/180x270" class="img-responsive">
-              <div class="caption">
-                <h3>Title</h3>
-                <p>Author Name</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
+                    <div class="row">
             <div class="col-md-3 pull-right">
               <a class="btn btn-lg btn-primary">View More</a>
             </div>
           </div>
-        </div>
       </div>
       <div class="container text-center">
         <div class="row">
