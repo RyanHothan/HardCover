@@ -117,7 +117,7 @@ INSERT INTO Book
 VALUES (@newId, 'Faithful and Virtuous Night', 'http://i.imgur.com/oEp35qy.jpg', GETDATE(), 5, DEFAULT, 'English', ' A luminous, seductive new collection from the “fearless” (The New York Times) Pulitzer Prize–winning poet. Louise Glück is one of the finest American poets at work today. Her Poems 1962–2012 was hailed as “a major event in this country’s literature” in the pages of The New York Times. Every new collection is at once a deepening and a revelation. Faithful and Virtuous Night is no exception. You enter the world of this spellbinding book through one of its many dreamlike portals, and each time you enter it’s the same place but it has been arranged differently. You were a woman. You were a man. This is a story of adventure, an encounter with the unknown, a knight’s undaunted journey into the kingdom of death; this is a story of the world you’ve always known, that first primer where “on page three a dog appeared, on page five a ball” and every familiar facet has been made to shimmer like the contours of a dream, “the dog float[ing] into the sky to join the ball.” Faithful and Virtuous Night tells a single story but the parts are mutable, the great sweep of its narrative mysterious and fateful, heartbreaking and charged with wonder.', 'Farrar, Straus and Giroux; 1St Edition edition');
 
 INSERT INTO Author(AuthorName, BookId)
-VALUES('Louise Glück', @newId);
+VALUES('Louise Gluck', @newId);
 
 INSERT INTO Genre(Genre, BookId)
 VALUES('Poetry', @newId);

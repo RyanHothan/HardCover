@@ -11,12 +11,12 @@
               rel="stylesheet" type="text/css">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
               rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-        <script type='text/javascript' src='js/jquery.js'></script>
         <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
         <script type='text/javascript' src='js/basic.js'></script>
+        <script type='text/javascript' src='js/homePageBooks.js'></script>
 
         <!-- Page styles -->
         <link type='text/css' href='css/demo.css' rel='stylesheet' media='screen' />
@@ -118,52 +118,50 @@
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <div class="thumbnail" draggable="true">
+                    <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <a href='#' class='basic'>
-                                <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                            </a>
+                            <img id = "newestBookCover0" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3>Title</h3>
-                            <p>Author Name</p>
+                            <h3 id = "newestBookTitle0"></h3>
+                            <p id = "newestBookAuthor0"></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <img src="http://placekitten.com/g/180/270" class="img-responsive">
+                            <img id = "newestBookCover1" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3>Title</h3>
-                            <p>Author Name</p>
+                            <h3 id = "newestBookTitle1"></h3>
+                            <p id = "newestBookAuthor1"></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <img src="http://placekitten.com/g/180/270" class="img-responsive">
+                            <img id = "newestBookCover2" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3>Title</h3>
-                            <p>Author Name</p>
+                            <h3 id = "newestBookTitle2"></h3>
+                            <p id = "newestBookAuthor2"></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <img src="http://placekitten.com/g/180/270" class="img-responsive">
+                            <img id = "newestBookCover3" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3>Title</h3>
-                            <p>Author Name</p>
+                            <h3 id = "newestBookTitle3"></h3>
+                            <p id = "newestBookAuthor3"></p>
                         </div>
                     </div>
                 </div>
-                <div class="row" draggable="true">
+                <div class="row" draggable="false">
                     <div class="col-md-3 pull-right">
                         <a class="btn btn-lg btn-primary">View More</a>
                     </div>
@@ -180,38 +178,38 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <img src="http://placekitten.com/g/180/270" class="img-responsive">
+                            <img id = "popularBookCover0" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3>Title</h3>
-                            <p>Author Name</p>
+                            <h3 id = "popularBookTitle0"></h3>
+                            <p id = "popularBookAuthor0"></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/180x270" class="img-responsive">
+                        <img id = "popularBookCover1" src="" class="img-responsive">
                         <div class="caption">
-                            <h3>Title</h3>
-                            <p>Author Name</p>
+                            <h3 id = "popularBookTitle1"></h3>
+                            <p id = "popularBookAuthor1"></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/180x270" class="img-responsive">
+                        <img id = "popularBookCover2" src="" class="img-responsive">
                         <div class="caption">
-                            <h3>Title</h3>
-                            <p>Author Name</p>
+                            <h3 id = "popularBookTitle2"></h3>
+                            <p id = "popularBookAuthor2"></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/180x270" class="img-responsive">
+                        <img id = "popularBookCover3" src="" class="img-responsive">
                         <div class="caption">
-                            <h3>Title</h3>
-                            <p>Author Name</p>
+                            <h3 id = "popularBookTitle3"></h3>
+                            <p id = "popularBookAuthor3"></p>
                         </div>
                     </div>
                 </div>

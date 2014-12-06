@@ -5,6 +5,7 @@
  */
 package GuestServlets;
 
+import BCrypt.BCrypt;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -44,7 +45,8 @@ public class RegisterUserServlet extends HttpServlet
         String password = request.getParameter("password");
         String libraryCardNum = request.getParameter("libraryCardNum");
         
-//        String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
+       String hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
+       password = hashed;
 
         try
         {

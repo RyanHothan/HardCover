@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +23,11 @@ import org.json.simple.JSONObject;
  *
  * @author Ryan Hothan
  */
-public class HomePageBooks extends HttpServlet
+@WebServlet(urlPatterns =
+{
+    "/HomePageBooksServlet"
+})
+public class HomePageBooksServlet extends HttpServlet
 {
 
     /**
@@ -38,7 +43,11 @@ public class HomePageBooks extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
+        //Get the top four most recently added books
         JSONArray newestBooks = getNewestBooks();
+        //Gets the top four most checked out books
+        getPopularBooks(newestBooks);
+        //Returns the data to the front end
         PrintWriter printout = response.getWriter();
         printout.print(newestBooks);
         printout.flush();
@@ -55,24 +64,77 @@ public class HomePageBooks extends HttpServlet
 
             Statement st = con.createStatement();
 
-            String query = "SELECT * "
+            String query = "SELECT TOP 4 * "
                     + "FROM [HardCover].[dbo].[Book] "
-                    + "WHERE ProfileId = '" + profileId + "'";
+                    + "ORDER BY DateAdded DESC;";
 
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next())
             {
                 JSONObject bookToAdd = new JSONObject();
+                Statement st2 = con.createStatement();
+                String bookId = rs.getString("BookUuid");
+                query = "SELECT AuthorName "
+                        + "FROM [HardCover].[dbo].[Author] "
+                        + "WHERE BookId = '" + bookId + "';";
+                ResultSet rs2 = st2.executeQuery(query);
+                rs2.next();
+                bookToAdd.put("author", rs2.getString("AuthorName"));
                 bookToAdd.put("title", rs.getString("Title"));
-                
+                bookToAdd.put("cover", rs.getString("Cover"));
+                bookToAdd.put("language", rs.getString("BookLanguage"));
+                bookToAdd.put("description", rs.getString("BookDescription"));
+                bookToAdd.put("publisher", rs.getString("Publisher"));
+                bookToAdd.put("dateAdded", rs.getString("DateAdded"));
                 jsons.add(bookToAdd);
             }
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
-        return null;
+        return jsons;
+    }
+    
+    private void getPopularBooks(JSONArray jsons)
+    {
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
+
+            Statement st = con.createStatement();
+
+            String query = "SELECT TOP 4 * "
+                    + "FROM [HardCover].[dbo].[Book] "
+                    + "ORDER BY TimesBorrowed;";
+
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next())
+            {
+                JSONObject bookToAdd = new JSONObject();
+                String bookId = rs.getString("BookUuid");
+                Statement st2 = con.createStatement();
+                query = "SELECT AuthorName "
+                        + "FROM [HardCover].[dbo].[Author] "
+                        + "WHERE BookId = '" + bookId + "';";
+                ResultSet rs2 = st2.executeQuery(query);
+                rs2.next();
+                bookToAdd.put("author", rs2.getString("AuthorName"));
+                bookToAdd.put("title", rs.getString("Title"));
+                bookToAdd.put("cover", rs.getString("Cover"));
+                bookToAdd.put("language", rs.getString("BookLanguage"));
+                bookToAdd.put("description", rs.getString("BookDescription"));
+                bookToAdd.put("publisher", rs.getString("Publisher"));
+                bookToAdd.put("dateAdded", rs.getString("DateAdded"));
+                jsons.add(bookToAdd);
+            }
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
