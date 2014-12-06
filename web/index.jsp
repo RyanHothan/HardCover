@@ -123,7 +123,7 @@
                             <img id = "newestBookCover0" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3 id = "newestBookTitle0"></h3>
+                            <h4 id = "newestBookTitle0"></h4>
                             <p id = "newestBookAuthor0"></p>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                             <img id = "newestBookCover1" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3 id = "newestBookTitle1"></h3>
+                            <h4 id = "newestBookTitle1"></h4>
                             <p id = "newestBookAuthor1"></p>
                         </div>
                     </div>
@@ -145,7 +145,7 @@
                             <img id = "newestBookCover2" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3 id = "newestBookTitle2"></h3>
+                            <h4 id = "newestBookTitle2"></h4>
                             <p id = "newestBookAuthor2"></p>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                             <img id = "newestBookCover3" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3 id = "newestBookTitle3"></h3>
+                            <h4 id = "newestBookTitle3"></h4>
                             <p id = "newestBookAuthor3"></p>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                             <img id = "popularBookCover0" src="" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h3 id = "popularBookTitle0"></h3>
+                            <h4 id = "popularBookTitle0"></h4>
                             <p id = "popularBookAuthor0"></p>
                         </div>
                     </div>
@@ -190,7 +190,7 @@
                     <div class="thumbnail">
                         <img id = "popularBookCover1" src="" class="img-responsive">
                         <div class="caption">
-                            <h3 id = "popularBookTitle1"></h3>
+                            <h4 id = "popularBookTitle1"></h4>
                             <p id = "popularBookAuthor1"></p>
                         </div>
                     </div>
@@ -199,7 +199,7 @@
                     <div class="thumbnail">
                         <img id = "popularBookCover2" src="" class="img-responsive">
                         <div class="caption">
-                            <h3 id = "popularBookTitle2"></h3>
+                            <h4 id = "popularBookTitle2"></h4>
                             <p id = "popularBookAuthor2"></p>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
                     <div class="thumbnail">
                         <img id = "popularBookCover3" src="" class="img-responsive">
                         <div class="caption">
-                            <h3 id = "popularBookTitle3"></h3>
+                            <h4 id = "popularBookTitle3"></h4>
                             <p id = "popularBookAuthor3"></p>
                         </div>
                     </div>
