@@ -33,9 +33,9 @@
 
         <!-- this is the modal -->
         <div id="basic-modal-content">
-            <h3>Cats by Ryan Hothan</h3>
-            <img src="http://placekitten.com/g/180/270" class="img-responsive" style="max-height: 200px;">
-            <p>This book offers many cat facts by Ryan Hothan</p>
+            <h4>title by author</h4>
+            <img src="" class="img-responsive" style="max-height: 200px;">
+            <p>desc</p>
             <button class ="btn btn-default" type="button">Borrow Book</button>
             <button class ="btn btn-default" type="button">More Info</button>
 
@@ -74,7 +74,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <img id = "newestBookCover0" src="" class="img-responsive">
+                            <input value="" type = "image" src="" id="newestBookCover0" class="img-responsive">
                         </a>
                         <div class="caption">
                             <h4 id = "newestBookTitle0"></h4>
