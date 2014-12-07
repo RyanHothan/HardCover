@@ -3,6 +3,7 @@
 
     <head>
         <meta charset="utf-8">
+        <%@ page session="true" %>
         <title>HardCover</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
@@ -29,54 +30,64 @@
 
         </div>
 
-        <div class="navbar navbar-default navbar-static-top navbar-inverse">
-            <div class="container">
+                <div class="navbar navbar-default navbar-static-top navbar-inverse">
+            <div class="container"> 
                 <div class="navbar-header">
-                    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></a>
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <a class="navbar-brand" href="index.jsp">
+                    <a class="navbar-brand" href="HardCover.html">
                         <span class="fa fa-book"></span> HardCover
                     </a>
                 </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li class="active">
-                            <a href="HardCover-browse.html"> Browse Books</a>
-                        </li>
-                        <li>
-                            <a href="mybooks.html">My Books</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li draggable="true">
-                            <input type="text" class="form-control" placeholder="Quick Search">
-                        </li>
-                        <li>
-                            <button type="button" class="btn btn-default">Search</button>
-                        </li>
-                        <li style="padding-left:20px;">
-                            <div class="btn-group" draggable="true">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">email@example.com
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="#">Account Settings</a>
+                <ul class="nav navbar-left navbar-nav">
+                    <li>
+                        <a href="HardCover-browse.jsp">Browse</a>
+                    </li>
+                    <li>
+                        <a href="#">My Books</a>
+                    </li>
+                </ul>
+                <div class="col-md-4 pull-right">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="${email}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4 pull-right">
+                    <div class="btn-group">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown">Log In
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <li role="presentation">
+                                            <input type="email" class="form-control" placeholder="email" id="loginEmail">
+                                        </li>
+                                    </div>
+                                    <div class="form-group">
+                                        <li role="presentation">
+                                            <input type="password" class="form-control" placeholder="password" id="loginPassword">
+                                        </li>
+                                    </div>
+                                    <li role="presentation">
+                                        <button type="submit" class="btn btn-default" onclick="loginUser()">Log In</button>
                                     </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">Log Out</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
+                                </form>
+                            </ul>
+                        </div>
+                           
+                    </div>
+                    <button class="btn" id="registerButton" type="button" style="float:right">Register</button> 
                 </div>
             </div>
         </div>
+        
+        
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

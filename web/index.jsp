@@ -3,6 +3,7 @@
 
     <head>
         <meta charset="utf-8">
+        <%@ page session="true" %>
         <title>HardCover eLibrary</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
@@ -16,6 +17,7 @@
 
         <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
         <script type='text/javascript' src='js/registerUser.js'></script>
+        <script type='text/javascript' src='js/loginUser.js'></script>
         <script type='text/javascript' src='js/basic.js'></script>
         <script type='text/javascript' src='js/homePageBooks.js'></script>
 
@@ -59,7 +61,7 @@
                 </div>
                 <ul class="nav navbar-left navbar-nav">
                     <li>
-                        <a href="HardCover-browse.html">Browse</a>
+                        <a href="HardCover-browse.jsp">Browse</a>
                     </li>
                     <li>
                         <a href="#">My Books</a>
@@ -67,7 +69,7 @@
                 </ul>
                 <div class="col-md-4 pull-right">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Books">
+                        <input type="text" class="form-control" placeholder="${email}">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button">
                                 <span class="fa fa-search"></span>
@@ -86,16 +88,16 @@
                                 <form role="form">
                                     <div class="form-group">
                                         <li role="presentation">
-                                            <input type="email" class="form-control" placeholder="email">
+                                            <input type="email" class="form-control" placeholder="email" id="loginEmail">
                                         </li>
                                     </div>
                                     <div class="form-group">
                                         <li role="presentation">
-                                            <input type="password" class="form-control" placeholder="password">
+                                            <input type="password" class="form-control" placeholder="password" id="loginPassword">
                                         </li>
                                     </div>
                                     <li role="presentation">
-                                        <button type="submit" class="btn btn-default">Log In</button>
+                                        <button type="submit" class="btn btn-default" onclick="loginUser()">Log In</button>
                                     </li>
                                 </form>
                             </ul>
@@ -104,7 +106,6 @@
                     </div>
                     <button class="btn" id="registerButton" type="button" style="float:right">Register</button> 
                 </div>
-                
             </div>
         </div>
         <div class="container">
