@@ -13,25 +13,19 @@ jQuery(function ($) {
 	//$('#basic-modal-content').modal();
 
 	// Load dialog on click
-	$('.thumbnail .basic').click(function (e) {
+	$('.thumbnail .basic').on('click', function (e) {
 		$('#basic-modal-content').modal({overlayClose:true});
 
 		return false;
 	});
         
-        $('.thumbnail .basic').click(function (e) {
-		$('#basic-modal-content-return').modal({overlayClose:true});
-
-		return false;
-	});
-        
-        $('#registerButton').click(function (e) {
+        $('#registerButton').on('click', function (e) {
 		$('#basic-modal-register').modal({overlayClose:true});
 
 		return false;
 	});
         
-        $('#registerButton').click(function (e) {
+        $('#registerButton').on('click', function (e) {
 		$('#basic-modal-register-return').modal({overlayClose:true});
 
 		return false;

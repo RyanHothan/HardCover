@@ -130,6 +130,7 @@ public class HomePageBooksServlet extends HttpServlet
                 bookToAdd.put("description", rs.getString("BookDescription"));
                 bookToAdd.put("publisher", rs.getString("Publisher"));
                 bookToAdd.put("dateAdded", rs.getString("DateAdded"));
+                bookToAdd.put("bookId", rs.getString("BookUuid"));
                 jsons.add(bookToAdd);
             }
         } catch (Exception e)

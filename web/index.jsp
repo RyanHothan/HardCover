@@ -3,6 +3,10 @@
 
     <head>
         <meta charset="utf-8">
+        <%@ include file="modals/bookModal.jsp" %>	
+        <%@ include file="modals/changeEmailModal.jsp" %>
+        <%@ include file="modals/changePasswordModal.jsp" %>     
+        <%@ include file="modals/registerModal.jsp" %>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ page session="true" %>
         <title>HardCover eLibrary</title>
@@ -32,32 +36,14 @@
     <body>
 
         <!-- this is the modal -->
-        <div id="basic-modal-content">
-            <h4>title by author</h4>
-            <img src="" class="img-responsive" style="max-height: 200px;">
-            <p>desc</p>
-            <button class ="btn btn-default" type="button">Borrow Book</button>
-            <button class ="btn btn-default" type="button">More Info</button>
 
-        </div>
-        
-        <div id="basic-modal-register">
-            <div style="max-width: 70%; font-size: 14px">
-            <div>First Name: </div><input type="text" placeholder="First Name" id="firstName"/><br/><br/>
-            <div>Last Name: </div><input type="text" placeholder="Last Name" id="lastName"/><br/><br/>
-            <div>Email: </div><input type="Email" placeholder="Email" id="email"/><br/><br/>
-            <div>Password: </div><input type="password" placeholder="Password" id="password"/><br/><br/>
-            <div>Library Card #: </div><input type="text" placeholder="Library Card Number" id="libraryCardNum"/><br/><br/>
-            </div>
-            <button class ="btn btn-default" type="button" onclick="registerUser()" id ="registerUserButton" style="float:right">Register</button>
 
-        </div>
         <c:choose>
             <c:when test="${empty email}">
-        <%@ include file="/guestNavigationBar.jsp" %>
+                <%@ include file="navBars/guestNavigationBar.jsp" %>
             </c:when>
             <c:otherwise>
-                <%@ include file="/registeredUserNavigationBar.jsp" %>
+                <%@ include file="navBars/registeredUserNavigationBar.jsp" %>
             </c:otherwise>
         </c:choose>
         <div class="container">
@@ -73,8 +59,8 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <a href='#' class='basic'>
-                            <input value="" type = "image" src="" id="newestBookCover0" class="img-responsive">
+                        <a href='#'>
+                            <input value="" type = "image" src="" id="newestBookCover0" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "newestBookTitle0"></h4>
@@ -85,7 +71,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <img id = "newestBookCover1" src="" class="img-responsive">
+                            <input value="" type = "image" src="" id="newestBookCover1" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "newestBookTitle1"></h4>
@@ -96,7 +82,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <img id = "newestBookCover2" src="" class="img-responsive">
+                            <input value="" type = "image" src="" id="newestBookCover2" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "newestBookTitle2"></h4>
@@ -107,7 +93,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <img id = "newestBookCover3" src="" class="img-responsive">
+                            <input value="" type = "image" src="" id="newestBookCover3" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "newestBookTitle3"></h4>
@@ -132,7 +118,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <img id = "popularBookCover0" src="" class="img-responsive">
+                            <input value="" type = "image" src="" id="popularBookCover0" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "popularBookTitle0"></h4>
@@ -142,7 +128,9 @@
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img id = "popularBookCover1" src="" class="img-responsive">
+                        <a href='#' class='basic'>
+                            <input value="" type = "image" src="" id="popularBookCover1" class="basic">
+                        </a>
                         <div class="caption">
                             <h4 id = "popularBookTitle1"></h4>
                             <p id = "popularBookAuthor1"></p>
@@ -151,7 +139,9 @@
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img id = "popularBookCover2" src="" class="img-responsive">
+                        <a href='#' class='basic'>
+                            <input value="" type = "image" src="" id="popularBookCover2" class="basic">
+                        </a>
                         <div class="caption">
                             <h4 id = "popularBookTitle2"></h4>
                             <p id = "popularBookAuthor2"></p>
@@ -160,7 +150,9 @@
                 </div>
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <img id = "popularBookCover3" src="" class="img-responsive">
+                        <a href='#' class='basic'>
+                            <input value="" type = "image" src="" id="popularBookCover3" class="basic">
+                        </a>
                         <div class="caption">
                             <h4 id = "popularBookTitle3"></h4>
                             <p id = "popularBookAuthor3"></p>
