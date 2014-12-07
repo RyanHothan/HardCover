@@ -3,6 +3,10 @@
 
     <head>
         <meta charset="utf-8">
+        <%@ include file="modals/bookModal.jsp" %>	
+        <%@ include file="modals/changeEmailModal.jsp" %>
+        <%@ include file="modals/changePasswordModal.jsp" %>     
+        <%@ include file="modals/registerModal.jsp" %>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ page session="true" %>
         <title>HardCover eLibrary</title>
@@ -32,14 +36,11 @@
     <body>
 
         <!-- this is the modal -->
-        <%@ include file="modals/bookModal.jsp" %>	
-        <%@ include file="modals/changeEmailModal.jsp" %>
-        <%@ include file="modals/changePasswordModal.jsp" %>     
-        <%@ include file="modals/registerModal.jsp" %>
-        
+
+
         <c:choose>
             <c:when test="${empty email}">
-        <%@ include file="navBars/guestNavigationBar.jsp" %>
+                <%@ include file="navBars/guestNavigationBar.jsp" %>
             </c:when>
             <c:otherwise>
                 <%@ include file="navBars/registeredUserNavigationBar.jsp" %>

@@ -1,4 +1,4 @@
-<div id="basic-modal-content-return">
+<div id="basic-modal-content">
     <h3>Cats by Ryan Hothan</h3>
     <div class="col-md-4">
         <img src="http://placekitten.com/g/180/270" class="img-responsive" style="max-height: 200px; test-align:left">
