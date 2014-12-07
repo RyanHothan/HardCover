@@ -7,7 +7,8 @@ function loginUser()
         url: '/HardCover/LoginUserServlet',
         type: 'POST',
         data: {loginEmail: loginEmail, loginPassword: loginPassword},
-        dataType: 'text',
+        async: false,
+        dataType: 'text'
     });
     
 }

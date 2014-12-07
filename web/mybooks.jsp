@@ -3,37 +3,76 @@
 
     <head>
         <meta charset="utf-8">
-        <%@ page session="true" %>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@ page session="true" %>
         <title>HardCover</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+              rel="stylesheet">
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
         <script type='text/javascript' src='js/jquery.js'></script>
         <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
         <script type='text/javascript' src='js/basic.js'></script>
+        <script type='text/javascript' src='js/basicreturn.js'></script>
+        <script type='text/javascript' src='js/passwordmodal.js'></script>
+        <script type='text/javascript' src='js/emailmodal.js'></script>
         <link type='text/css' href='css/demo.css' rel='stylesheet' media='screen' />
 
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
     </head>
     <body>
-        <div id="basic-modal-content">
-            <h3>Cats by Ryan Hothan</h3>
-            <img src="http://placekitten.com/g/180/270" class="img-responsive" style="max-height: 200px;">
-            <p>This book offers many cat facts by the bundle of sticks known as Ryan Hothan</p>
-            <button class ="btn btn-default" type="button">Borrow Book</button>
-            <button class ="btn btn-default" type="button">More Info</button>
+        <div id="basic-modal-content-return">
 
+            <h3>Cats by Ryan Hothan</h3>
+
+            <div class="col-md-4">
+                <img src="http://placekitten.com/g/180/270" class="img-responsive" style="max-height: 200px; test-align:left">
+            </div>
+            <div class="col-md-7">
+                <div style="text-align:center; font-size:10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</div>
+
+            </div>
+
+            <div class="col-md-10"></div>
+            <div class ="col-md-10">
+                <p style="line-height:40%"></p>
+                <p style="line-height:40%">Genre: Animal Science</p>
+                <p style="line-height:40%">Languages: <a href='#'>English</a>, <a href='#'>German </a></p>
+                <p style="line-height:40%">Copies Available: 10</p>
+                <br />
+
+                <div class = "col-md-6"> <button class ="btn btn-default" type="button">Return Book</button> </div>
+                <button class ="btn btn-default" type="button" >Download Book</button>
+            </div>
+        </div>		
+
+        <div id="change-password-modal">
+            <h3>Change Password</h3>
+            <h4>Enter Current Password:</h4>
+            <input type="password">
+            <h4>Enter New Password:</h4>
+            <input type="password">
+            <h4>Confirm New Password:</h4>
+            <input type="password"> <br /> <br />
+            <button>Submit</button>
         </div>
 
+        <div id="change-email-modal">
+            <h3>Change Password</h3>
+            <h4>Enter Current Password:</h4>
+            <input type="password">
+            <h4>Enter New Email:</h4>
+            <input type="email"> <br /> <br />
+            <button>Submit</button>
+        </div>
         <c:choose>
             <c:when test="${empty email}">
-        <%@ include file="/guestNavigationBar.jsp" %>
+                <%@ include file="/guestNavigationBar.jsp" %>
             </c:when>
             <c:otherwise>
                 <%@ include file="/registeredUserNavigationBar.jsp" %>
@@ -42,8 +81,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Browse Books</h1>
+                    <h1>My Books</h1>
                     <hr>
+                </div>
+                <div class="col" style="text-align:right">
+                    <h3>Email : email.example.com</h3>
+                    <h4><a href='#' class='changepassword'>Change Password</a></h4>
+                    <h4><a href='#' class='changeemail'>Change E-Mail</a></h4>
                 </div>
             </div>
             <div class="row">
@@ -54,35 +98,34 @@
                     </div>
                     <div class="row">
                         <h3>Search</h3>
-                        <h4>Author<input type="search" name="vehicle" ></h4>
-                        <h4>Title<input type="search" name="vehicle" ></h4>
+                        <h4>Author<br /><input type="search" name="vehicle" ></h4>
+                        <h4>Title<br /><input type="search" name="vehicle"></h4>
                     </div>
                     <div class="row">
                         <h3>Genre</h3>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Fantasy<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Biography<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Science Fiction<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Adult<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">For Dummies<br></h4>
+                        <h4><input type="checkbox" >Fantasy<br></h4>
+                        <h4><input type="checkbox" >Biography<br></h4>
+                        <h4><input type="checkbox" >Science Fiction<br></h4>
+                        <h4><input type="checkbox" >Adult<br></h4>
+                        <h4><input type="checkbox" >For Dummies<br></h4>
                     </div>
                     <div class="row">
                         <h3>Availability</h3>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Available Only<br></h4>
+                        <h4><input type="checkbox" >Available Only<br></h4>
                     </div> 
                     <div class="row">
                         <h3> Age Group </h3>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Age 4-12<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Age 13-17<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Age 18+<br></h4>
+                        <h4><input type="checkbox" >Age 4-12<br></h4>
+                        <h4><input type="checkbox" >Age 13-17<br></h4>
+                        <h4><input type="checkbox" >Age 18+<br></h4>
                     </div>
                     <div class="row">
                         <h3> Format </h3>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">.PDF File<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">EPUB File<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">AZW File<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">In Browser File<br></h4>
-                    </div>
-
+                        <h4><input type="checkbox" >.PDF File<br></h4>
+                        <h4><input type="checkbox" >EPUB File<br></h4>
+                        <h4><input type="checkbox" >AZW File<br></h4>
+                        <h4><input type="checkbox" >In Browser File<br></h4>
+                    </div> 
                 </div>
                 <div class="col-md-9">
                     <div class="row">
@@ -96,18 +139,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="thumbnail" draggable="true">
-                                <a href='#' class='basic'>
-                                        <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                    </a>
-                                <div class="caption">
-                                    <h3>Title</h3>
-                                    <p>Author Name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <a href='#' class='basic'>
+                                <a href='#' class='basicmybooks'>
                                     <img src="http://placekitten.com/g/180/270" class="img-responsive">
                                 </a>
                                 <div class="caption">
@@ -118,7 +150,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href='#' class='basic'>
+                                <a href='#' class='basicmybooks'>
                                     <img src="http://placekitten.com/g/180/270" class="img-responsive">
                                 </a>
                                 <div class="caption">
@@ -129,7 +161,18 @@
                         </div>
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href='#' class='basic'>
+                                <a href='#' class='basicmybooks'>
+                                    <img src="http://placekitten.com/g/180/270" class="img-responsive">
+                                </a>
+                                <div class="caption">
+                                    <h3>Title</h3>
+                                    <p>Author Name</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href='#' class='basicmybooks'>
                                     <img src="http://placekitten.com/g/180/270" class="img-responsive">
                                 </a>
                                 <div class="caption">
@@ -141,7 +184,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="thumbnail">
-                                    <a href='#' class='basic'>
+                                    <a href='#' class='basicmybooks'>
                                         <img src="http://placekitten.com/g/180/270" class="img-responsive">
                                     </a>
                                     <div class="caption">
@@ -152,7 +195,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="thumbnail">
-                                    <a href='#' class='basic'>
+                                    <a href='#' class='basicmybooks'>
                                         <img src="http://placekitten.com/g/180/270" class="img-responsive">
                                     </a>
                                     <div class="caption">
@@ -163,7 +206,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="thumbnail">
-                                    <a href='#' class='basic'>
+                                    <a href='#' class='basicmybooks'>
                                         <img src="http://placekitten.com/g/180/270" class="img-responsive">
                                     </a>
                                     <div class="caption">
@@ -174,7 +217,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="thumbnail">
-                                    <a href='#' class='basic'>
+                                    <a href='#' class='basicmybooks'>
                                         <img src="http://placekitten.com/g/180/270" class="img-responsive">
                                     </a>
                                     <div class="caption">
@@ -186,7 +229,9 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
     </body>
 </html>

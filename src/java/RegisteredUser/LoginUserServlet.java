@@ -64,12 +64,8 @@ public class LoginUserServlet extends HttpServlet
                 {
                     HttpSession session = request.getSession(true);
                     session.setAttribute("email", loginEmail);
-                    
-                    
                 }
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-                    dispatcher.forward(request, response);
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
