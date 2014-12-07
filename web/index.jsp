@@ -32,32 +32,17 @@
     <body>
 
         <!-- this is the modal -->
-        <div id="basic-modal-content">
-            <h3>Cats by Ryan Hothan</h3>
-            <img src="http://placekitten.com/g/180/270" class="img-responsive" style="max-height: 200px;">
-            <p>This book offers many cat facts by Ryan Hothan</p>
-            <button class ="btn btn-default" type="button">Borrow Book</button>
-            <button class ="btn btn-default" type="button">More Info</button>
-
-        </div>
+        <%@ include file="modals/bookModal.jsp" %>	
+        <%@ include file="modals/changeEmailModal.jsp" %>
+        <%@ include file="modals/changePasswordModal.jsp" %>     
+        <%@ include file="modals/registerModal.jsp" %>
         
-        <div id="basic-modal-register">
-            <div style="max-width: 70%; font-size: 14px">
-            <div>First Name: </div><input type="text" placeholder="First Name" id="firstName"/><br/><br/>
-            <div>Last Name: </div><input type="text" placeholder="Last Name" id="lastName"/><br/><br/>
-            <div>Email: </div><input type="Email" placeholder="Email" id="email"/><br/><br/>
-            <div>Password: </div><input type="password" placeholder="Password" id="password"/><br/><br/>
-            <div>Library Card #: </div><input type="text" placeholder="Library Card Number" id="libraryCardNum"/><br/><br/>
-            </div>
-            <button class ="btn btn-default" type="button" onclick="registerUser()" id ="registerUserButton" style="float:right">Register</button>
-
-        </div>
         <c:choose>
             <c:when test="${empty email}">
-        <%@ include file="/guestNavigationBar.jsp" %>
+        <%@ include file="navBars/guestNavigationBar.jsp" %>
             </c:when>
             <c:otherwise>
-                <%@ include file="/registeredUserNavigationBar.jsp" %>
+                <%@ include file="navBars/registeredUserNavigationBar.jsp" %>
             </c:otherwise>
         </c:choose>
         <div class="container">

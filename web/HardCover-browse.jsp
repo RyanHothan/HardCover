@@ -22,21 +22,17 @@
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
     </head>
     <body>
-        <div id="basic-modal-content">
-            <h3>Cats by Ryan Hothan</h3>
-            <img src="http://placekitten.com/g/180/270" class="img-responsive" style="max-height: 200px;">
-            <p>This book offers many cat facts by the bundle of sticks known as Ryan Hothan</p>
-            <button class ="btn btn-default" type="button">Borrow Book</button>
-            <button class ="btn btn-default" type="button">More Info</button>
-
-        </div>
+        <%@ include file="modals/bookModal.jsp" %>	
+        <%@ include file="modals/changeEmailModal.jsp" %>
+        <%@ include file="modals/changePasswordModal.jsp" %>     
+        <%@ include file="modals/registerModal.jsp" %>
 
         <c:choose>
             <c:when test="${empty email}">
-        <%@ include file="/guestNavigationBar.jsp" %>
+                <%@ include file="navBars/guestNavigationBar.jsp" %>
             </c:when>
             <c:otherwise>
-                <%@ include file="/registeredUserNavigationBar.jsp" %>
+                <%@ include file="navBars/registeredUserNavigationBar.jsp" %>
             </c:otherwise>
         </c:choose>
         <div class="container">
@@ -97,8 +93,8 @@
                         <div class="col-md-3">
                             <div class="thumbnail" draggable="true">
                                 <a href='#' class='basic'>
-                                        <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                    </a>
+                                    <img src="http://placekitten.com/g/180/270" class="img-responsive">
+                                </a>
                                 <div class="caption">
                                     <h3>Title</h3>
                                     <p>Author Name</p>
