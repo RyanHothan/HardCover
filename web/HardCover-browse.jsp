@@ -4,6 +4,7 @@
     <head>
         <meta charset="utf-8">
         <%@ page session="true" %>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <title>HardCover</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
@@ -30,64 +31,14 @@
 
         </div>
 
-                <div class="navbar navbar-default navbar-static-top navbar-inverse">
-            <div class="container"> 
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="HardCover.html">
-                        <span class="fa fa-book"></span> HardCover
-                    </a>
-                </div>
-                <ul class="nav navbar-left navbar-nav">
-                    <li>
-                        <a href="HardCover-browse.jsp">Browse</a>
-                    </li>
-                    <li>
-                        <a href="#">My Books</a>
-                    </li>
-                </ul>
-                <div class="col-md-4 pull-right">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="${email}">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="fa fa-search"></span>
-                            </button>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-md-4 pull-right">
-                    <div class="btn-group">
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                    data-toggle="dropdown">Log In
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                <form role="form">
-                                    <div class="form-group">
-                                        <li role="presentation">
-                                            <input type="email" class="form-control" placeholder="email" id="loginEmail">
-                                        </li>
-                                    </div>
-                                    <div class="form-group">
-                                        <li role="presentation">
-                                            <input type="password" class="form-control" placeholder="password" id="loginPassword">
-                                        </li>
-                                    </div>
-                                    <li role="presentation">
-                                        <button type="submit" class="btn btn-default" onclick="loginUser()">Log In</button>
-                                    </li>
-                                </form>
-                            </ul>
-                        </div>
-                           
-                    </div>
-                    <button class="btn" id="registerButton" type="button" style="float:right">Register</button> 
-                </div>
-            </div>
-        </div>
-        
-        
+        <c:choose>
+            <c:when test="${empty email}">
+        <%@ include file="/guestNavigationBar.jsp" %>
+            </c:when>
+            <c:otherwise>
+                <%@ include file="/registeredUserNavigationBar.jsp" %>
+            </c:otherwise>
+        </c:choose>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

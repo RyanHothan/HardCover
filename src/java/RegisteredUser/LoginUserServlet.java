@@ -42,6 +42,7 @@ public class LoginUserServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
+        String url = "/HardCover-Browse.jsp";
         String loginEmail = request.getParameter("loginEmail");
         String loginPassword = request.getParameter("loginPassword");
         try
@@ -69,7 +70,7 @@ public class LoginUserServlet extends HttpServlet
         {
             System.out.println(e.getMessage());
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
