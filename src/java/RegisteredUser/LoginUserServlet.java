@@ -3,28 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GuestServlets;
+package RegisteredUser;
 
 import BCrypt.BCrypt;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Javier
  */
-@WebServlet(name = "RegisterUserServlet", urlPatterns =
+@WebServlet(name = "LoginUserServlet", urlPatterns =
 {
-    "/RegisterUserServlet"
+    "/LoginUserServlet"
 })
-public class RegisterUserServlet extends HttpServlet
+public class LoginUserServlet extends HttpServlet
 {
 
     /**
@@ -39,15 +42,9 @@ public class RegisterUserServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String libraryCardNum = request.getParameter("libraryCardNum");
-
-        String hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
-        password = hashed;
-
+        String url = "/HardCover-Browse.jsp";
+        String loginEmail = request.getParameter("loginEmail");
+        String loginPassword = request.getParameter("loginPassword");
         try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -56,17 +53,28 @@ public class RegisterUserServlet extends HttpServlet
 
             Statement st = con.createStatement();
 
-            String query = "DECLARE @newId UNIQUEIDENTIFIER; " 
-                    + "SET @newId = NEWID(); "
-                    + "INSERT INTO [HardCover].[dbo].[Person] "
-                    + "VALUES(@newId, '" + email + "' , '" + password + "' , '" + firstName + "' , '" + lastName + "' , 0); "
-                    + "INSERT INTO [HardCover].[dbo].[RegisteredUser] " 
-                    + "VALUES(@newId, '" + libraryCardNum + "', 1);";
-            st.executeUpdate(query);
+            String query = "SELECT * "
+                    + "FROM [HardCover].[dbo].[Person] "
+                    + "WHERE Email = '" + loginEmail + "'";
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next())
+            {
+                String hashed = rs.getString("Password");
+                if (BCrypt.checkpw(loginPassword, hashed))
+                {
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute("email", loginEmail);
+                    
+                    
+                }
+            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+                    dispatcher.forward(request, response);
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -10,7 +10,7 @@ function registerUser()
         url: '/HardCover/RegisterUserServlet',
         type:'POST',
         data:{firstName : firstName, lastName : lastName, email : email, password : password, libraryCardNum : libraryCardNum}, 
-        dataType: 'text',
+        dataType: 'text'
     })
 
 }
