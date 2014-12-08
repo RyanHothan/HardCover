@@ -12,21 +12,17 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
  *
  * @author Ryan Hothan
  */
-@WebServlet(name = "BookInfoServlet", urlPatterns =
-{
-    "/BookInfoServlet"
-})
-public class BookInfoServlet extends HttpServlet
+public class BookSearchServlet extends HttpServlet
 {
 
     /**
@@ -42,15 +38,15 @@ public class BookInfoServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        JSONObject book = getBookInfo(request.getParameter("bookId"));
+        JSONArray books = getSearchResults(request.getParameter("searchPhrase"));
         PrintWriter printout = response.getWriter();
-        printout.print(book);
+        printout.print(books);
         printout.flush();
     }
 
-    private JSONObject getBookInfo(String bookId)
+    private JSONArray getSearchResults(String searchPhrase)
     {
-        JSONObject ourBook = new JSONObject();
+        JSONArray booksToReturn = new JSONArray();
         try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -58,65 +54,52 @@ public class BookInfoServlet extends HttpServlet
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
 
             Statement st = con.createStatement();
-            Statement st2 = con.createStatement();
-            Statement st3 = con.createStatement();
-            String query = "SELECT * "
-                    + "FROM [HardCover].[dbo].[Book] "
-                    + "WHERE BookUuid = '" + bookId + "';";
-
-            String query2 = "SELECT AuthorName "
-                    + "FROM [HardCover].[dbo].[Author] "
-                    + "WHERE BookId = '" + bookId + "';";
-
-            String query3 = "SELECT Genre "
-                    + "FROM [HardCover].[dbo].[Genre] "
-                    + "WHERE BookId = '" + bookId + "';";
-
+            
+            String query="SELECT * " 
+                    + "FROM HardCover.dbo.Book JOIN HardCover.dbo.Author "
+                    + "ON HardCover.dbo.Book.BookUuid = HardCover.dbo.Author.BookId "
+                    + "JOIN HardCover.dbo.Genre ON HardCover.dbo.Book.BookUuid = HardCover.dbo.Genre.BookId "
+                    + "WHERE FREETEXT((Title, Publisher, BookDescription, BookLanguage), '" 
+                    + searchPhrase + "') OR FREETEXT(AuthorName,'" + searchPhrase 
+                    + "') OR FREETEXT(Genre,'" + searchPhrase + "');";
+            
             ResultSet rs = st.executeQuery(query);
-            ResultSet rs2 = st2.executeQuery(query2);
-            ResultSet rs3 = st3.executeQuery(query3);
-
-            rs.next();
-            String authors = "";
-            while (rs2.next())
+            String oldTitle = "";
+            String oldAuthor = "";
+            while(rs.next())
             {
-                if (authors.isEmpty())
+                JSONObject bookToAdd = new JSONObject();
+                String newTitle = rs.getString("Title");
+                String newAuthor = rs.getString("AuthorName");
+                if(oldTitle.equals(newTitle))
                 {
-                    authors = rs2.getString("AuthorName");
-                } else
+                    if(!(oldAuthor.equals(newAuthor)))
+                    {
+                        bookToAdd = ((JSONObject)booksToReturn.remove(booksToReturn.size()-1));
+                        bookToAdd.put("author", bookToAdd.get("author") + ", " + newAuthor);
+                        oldAuthor = newAuthor;
+                        booksToReturn.add(bookToAdd);
+                    }
+                }
+                else
                 {
-                    authors = authors + ", " + rs2.getString("AuthorName");
+                    bookToAdd.put("bookId", rs.getString("BookUuid"));
+                    bookToAdd.put("title", newTitle);
+                    bookToAdd.put("cover", rs.getString("Cover"));
+                    bookToAdd.put("author", newAuthor);
+                    oldTitle = newTitle;
+                    oldAuthor = newAuthor;
+                    booksToReturn.add(bookToAdd);
                 }
             }
-            String genres = "";
-            while (rs3.next())
-            {
-                if (genres.isEmpty())
-                {
-                    genres = rs3.getString("Genre");
-                } else
-                {
-                    genres = genres + ", " + rs3.getString("Genre");
-                }
-            }
-            ourBook.put("authors", authors);
-            ourBook.put("genres", genres);
-            ourBook.put("title", rs.getString("Title"));
-            ourBook.put("description", rs.getString("BookDescription"));
-            ourBook.put("cover", rs.getString("Cover"));
-            ourBook.put("numCopies", rs.getString("NumCopies"));
-            ourBook.put("language", rs.getString("BookLanguage"));
-            ourBook.put("publisher", rs.getString("Publisher"));
-        } catch (Exception e)
+        }
+        catch(Exception e)
         {
             System.out.println(e.getMessage());
         }
-
-        return ourBook;
+        return booksToReturn;
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
     /**
      * Handles the HTTP <code>GET</code> method.
      *

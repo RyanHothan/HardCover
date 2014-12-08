@@ -15,7 +15,7 @@
         </ul>
         <div class="col-md-4 pull-right">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search Books">
+                <input id = "quickSearchBar" type="text" class="form-control" placeholder="Search Books">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button">
                         <span class="fa fa-search"></span>

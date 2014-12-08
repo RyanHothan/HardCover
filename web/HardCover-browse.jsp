@@ -3,6 +3,10 @@
 
     <head>
         <meta charset="utf-8">
+        <%@ include file="modals/bookModal.jsp" %>	
+        <%@ include file="modals/changeEmailModal.jsp" %>
+        <%@ include file="modals/changePasswordModal.jsp" %>     
+        <%@ include file="modals/registerModal.jsp" %>
         <%@ page session="true" %>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <title>HardCover</title>
@@ -10,22 +14,21 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-        <script type='text/javascript' src='js/jquery.js'></script>
-        <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
-        <script type='text/javascript' src='js/basic.js'></script>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link type='text/css' href='css/demo.css' rel='stylesheet' media='screen' />
-
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src='js/jquery.js'></script>
+        <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
+        <script type='text/javascript' src='js/quickSearch.js'></script>
+        <script type='text/javascript' src='js/browseBooks.js'></script>
+        <script type='text/javascript' src='js/basic.js'></script>
+        <script type='text/javascript' src='js/populateModal.js'></script>
     </head>
     <body>
-        <%@ include file="modals/bookModal.jsp" %>	
-        <%@ include file="modals/changeEmailModal.jsp" %>
-        <%@ include file="modals/changePasswordModal.jsp" %>     
-        <%@ include file="modals/registerModal.jsp" %>
 
         <c:choose>
             <c:when test="${empty email}">
@@ -43,7 +46,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3" draggable="true" style="padding-right:20px; border-right: 1px solid #ccc;">
+                <div class="col-md-3" style="padding-right:20px; border-right: 1px solid #ccc;">
                     <div class="row">
                         <h3>Filter</h3>
                         <hr>
@@ -80,109 +83,18 @@
                     </div>
 
                 </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <form class="navbar-form navbar-left" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search">
+                <div id = "bookSearchResultsView" class="col-md-9">
+                    <div class='row'>
+                        <form class='navbar-form navbar-left' role='search'>
+                            <div class='form-group'>
+                                <input type='text' class='form-control' placeholder='Search'>
                             </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type='submit' class='btn btn-default'>Submit</button>
                         </form>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="thumbnail" draggable="true">
-                                <a href='#' class='basic'>
-                                    <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                </a>
-                                <div class="caption">
-                                    <h3>Title</h3>
-                                    <p>Author Name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <a href='#' class='basic'>
-                                    <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                </a>
-                                <div class="caption">
-                                    <h3>Title</h3>
-                                    <p>Author Name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <a href='#' class='basic'>
-                                    <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                </a>
-                                <div class="caption">
-                                    <h3>Title</h3>
-                                    <p>Author Name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <a href='#' class='basic'>
-                                    <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                </a>
-                                <div class="caption">
-                                    <h3>Title</h3>
-                                    <p>Author Name</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <a href='#' class='basic'>
-                                        <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Title</h3>
-                                        <p>Author Name</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <a href='#' class='basic'>
-                                        <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Title</h3>
-                                        <p>Author Name</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <a href='#' class='basic'>
-                                        <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Title</h3>
-                                        <p>Author Name</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="thumbnail">
-                                    <a href='#' class='basic'>
-                                        <img src="http://placekitten.com/g/180/270" class="img-responsive">
-                                    </a>
-                                    <div class="caption">
-                                        <h3>Title</h3>
-                                        <p>Author Name</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
