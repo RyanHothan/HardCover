@@ -28,7 +28,7 @@
                 </li>
                 <li style="padding-left:20px;">
                     <div class="btn-group" draggable="true">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">${email}
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="loggedInEmail">${email}
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
@@ -37,7 +37,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">Log Out</a>
+                                <input type="button" value="Log Out" onclick="logOut()">
                             </li>
                         </ul>
                     </div>

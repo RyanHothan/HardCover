@@ -13,31 +13,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-              rel="stylesheet" type="text/css">
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-              rel="stylesheet" type="text/css">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
         <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
         <script type='text/javascript' src='js/registerUser.js'></script>
         <script type='text/javascript' src='js/loginUser.js'></script>
         <script type='text/javascript' src='js/basic.js'></script>
         <script type='text/javascript' src='js/homePageBooks.js'></script>
+        <script type='text/javascript' src='js/logOut.js'></script>
+        <script type='text/javascript' src='js/borrowBook.js'></script>
 
         <!-- Page styles -->
         <link type='text/css' href='css/demo.css' rel='stylesheet' media='screen' />
-
-        <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
+
     </head>
-
     <body>
-
-        <!-- this is the modal -->
-
-
         <c:choose>
             <c:when test="${empty email}">
                 <%@ include file="navBars/guestNavigationBar.jsp" %>
@@ -60,7 +53,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#'>
-                            <input value="" type = "image" src="" id="newestBookCover0" class="basic">
+                            <input type = "image" src="" id="newestBookCover0" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "newestBookTitle0"></h4>
@@ -71,7 +64,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <input value="" type = "image" src="" id="newestBookCover1" class="basic">
+                            <input type = "image" src="" id="newestBookCover1" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "newestBookTitle1"></h4>
@@ -82,7 +75,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <input value="" type = "image" src="" id="newestBookCover2" class="basic">
+                            <input type = "image" src="" id="newestBookCover2" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "newestBookTitle2"></h4>
@@ -93,7 +86,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <input value="" type = "image" src="" id="newestBookCover3" class="basic">
+                            <input type = "image" src="" id="newestBookCover3" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "newestBookTitle3"></h4>
@@ -115,10 +108,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3" >
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <input value="" type = "image" src="" id="popularBookCover0" class="basic">
+                            <input type = "image" src="" id="popularBookCover0" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "popularBookTitle0"></h4>
@@ -129,7 +122,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <input value="" type = "image" src="" id="popularBookCover1" class="basic">
+                            <input type = "image" src="" id="popularBookCover1" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "popularBookTitle1"></h4>
@@ -140,7 +133,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <input value="" type = "image" src="" id="popularBookCover2" class="basic">
+                            <input type = "image" src="" id="popularBookCover2" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "popularBookTitle2"></h4>
@@ -151,7 +144,7 @@
                 <div class="col-md-3">
                     <div class="thumbnail">
                         <a href='#' class='basic'>
-                            <input value="" type = "image" src="" id="popularBookCover3" class="basic">
+                            <input type = "image" src="" id="popularBookCover3" class="basic">
                         </a>
                         <div class="caption">
                             <h4 id = "popularBookTitle3"></h4>

@@ -1,4 +1,10 @@
 jQuery(function ($) {
+    
+    window.onhashchange = function(){
+    var what_to_do = document.location.hash;    
+    if (what_to_do=="#show_picture")
+        show_picture();
+}
 
     $.ajax({
         url: '/HardCover/HomePageBooksServlet',
@@ -75,6 +81,7 @@ function populateModal(book)
             $("#modalLanguage").html("Language: " + language);
             $("#modalGenres").html("Genres: " + genres);
             $("#modalCopies").html("Number of Copies: " + numCopies);
+            document.location.hash = bookId;
         }
     });
 }
