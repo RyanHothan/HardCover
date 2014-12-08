@@ -61,7 +61,8 @@ public class BookSearchServlet extends HttpServlet
                     + "JOIN HardCover.dbo.Genre ON HardCover.dbo.Book.BookUuid = HardCover.dbo.Genre.BookId "
                     + "WHERE FREETEXT((Title, Publisher, BookDescription, BookLanguage), '" 
                     + searchPhrase + "') OR FREETEXT(AuthorName,'" + searchPhrase 
-                    + "') OR FREETEXT(Genre,'" + searchPhrase + "');";
+                    + "') OR FREETEXT(Genre,'" + searchPhrase + "') "
+                    + " ORDER BY Title;";
             
             ResultSet rs = st.executeQuery(query);
             String oldTitle = "";
