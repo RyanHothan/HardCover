@@ -155,3 +155,35 @@ VALUES('Fiction', @newId);
 INSERT INTO Genre(Genre, BookId)
 VALUES('War', @newId);
 
+CREATE FULLTEXT CATALOG Book_catalog;
+
+CREATE UNIQUE INDEX ui_Book ON Book(BookUuid);
+CREATE UNIQUE INDEX ui_Author ON Author(AuthorId);
+CREATE UNIQUE INDEX ui_Genre ON Genre(GenreId);
+
+CREATE FULLTEXT INDEX ON Book
+(
+	Title, BookDescription, BookLanguage, Publisher
+	Language 1033
+
+)
+KEY INDEX ui_Book ON Book_catalog
+WITH CHANGE_TRACKING AUTO;
+
+CREATE FULLTEXT INDEX ON Author
+(
+	AuthorName
+	Language 1033
+
+)
+KEY INDEX ui_Author ON Book_catalog
+WITH CHANGE_TRACKING AUTO;
+
+CREATE FULLTEXT INDEX ON Genre
+(
+	Genre
+	Language 1033
+
+)
+KEY INDEX ui_Genre ON Book_catalog
+WITH CHANGE_TRACKING AUTO;

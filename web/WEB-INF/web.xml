@@ -4,9 +4,17 @@
         <servlet-name>NewestBooksServlet</servlet-name>
         <servlet-class>bookUtilities.HomePageBooksServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BookSearchServlet</servlet-name>
+        <servlet-class>bookUtilities.BookSearchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewestBooksServlet</servlet-name>
         <url-pattern>/NewestBooksServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BookSearchServlet</servlet-name>
+        <url-pattern>/BookSearchServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
