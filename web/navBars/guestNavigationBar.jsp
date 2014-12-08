@@ -17,7 +17,7 @@
             <div class="input-group">
                 <input id = "quickSearchBar" type="text" class="form-control" placeholder="Search Books">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
+                    <button id = "searchButton" class="btn btn-default" type="button">
                         <span class="fa fa-search"></span>
                     </button>
                 </span>
