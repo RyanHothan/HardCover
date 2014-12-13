@@ -1,3 +1,4 @@
+var bookResults;
 
 jQuery(function ($) {
     $("#quickSearchBar").keypress(function (e)
@@ -27,11 +28,10 @@ function quickSearchButton(me)
 {
     window.location = "/HardCover/HardCover-browse.jsp#" + me.val();
     populateSearch();
-}
-;
-
+};
 function populateSearch() {
     $("#bookSearchResultsView").empty();
+
     $.ajax({
         url: '/HardCover/BookSearchServlet',
         type: 'GET',
@@ -40,6 +40,7 @@ function populateSearch() {
         data: {searchPhrase: window.location.hash.substring(1)},
         success: function (data)
         {
+            bookResults = data;
             var rowNum;
             for (i = 0; i < data.length; i++)
             {
