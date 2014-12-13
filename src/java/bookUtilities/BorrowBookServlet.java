@@ -89,7 +89,7 @@ public class BorrowBookServlet extends HttpServlet
             Timestamp stamp = new Timestamp(someDate.getTimeInMillis());
             
             query = "INSERT INTO [HardCover].[dbo].[CheckedOutBook](RegisteredUserId, BookId, ExpirationDate) "
-                    +"VALUES('" + PersonUuid + "' , '" + book + "', '" + stamp + "')";
+                    +"VALUES('" + PersonUuid + "' , '" + book + "', '" + stamp + "', 0)";
             st.executeUpdate(query);
         } catch (Exception e)
         {
