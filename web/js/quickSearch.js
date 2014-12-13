@@ -55,7 +55,7 @@ function populateSearch(){
                         $("#bookSearchResultsView").append("<div id = 'booksSearchResultsRow" + rowNum + "' class='row'></div>");
                     }
                     $("#booksSearchResultsRow" + rowNum).append(
-                            "<div class='col-md-3'>"
+                            "<div class='col-md-4'>"
                             + "<div class='thumbnail'>"
                             + "<a href='#'>"
                             + "<input id='booksSearchResult" + i + "'type='image' value='" + data[i].bookId + "' src='" + data[i].cover + "' class='basic'>"

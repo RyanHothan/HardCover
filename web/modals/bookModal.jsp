@@ -4,11 +4,11 @@
         <img id = "modalImage" src="" class="img-responsive" style="max-height: 200px; test-align:left">
     </div>
     <div class="col-md-7">
-        <div id = "modalDescription" style="text-align:center; font-size:10px"></div>
+        <div id = "modalDescription" style="text-align:center; font-size:12px"></div>
     </div>
     <div class="col-md-10"></div>
     <div class ="col-md-10">
-        <p id = "modalGenres" style="line-height:40%"></p>
+        <p id = "modalGenres" style="line-height:80%"></p>
         <p id = "modalLanguage" style="line-height:40%"></p>
         <p id = "modalCopies" style="line-height:40%"></p>
         <p id = "modalPublisher" style="line-height:40%"></p>
