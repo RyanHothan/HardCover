@@ -30,6 +30,7 @@
         <script type='text/javascript' src='js/homePageBooks.js'></script>
         <script type='text/javascript' src='js/quickSearch.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
+        <script type='text/javascript' src='js/viewMore.js'></script>
 
  
     </head>
@@ -99,7 +100,7 @@
                 </div>
                 <div class="row" draggable="false">
                     <div class="col-md-3 pull-right">
-                        <a class="btn btn-lg btn-primary">View More</a>
+                        <a class="btn btn-lg btn-primary" onclick = "newestBookSearch()">View More</a>
                     </div>
                 </div>
             </div>
@@ -157,7 +158,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-3 pull-right">
-                        <a class="btn btn-lg btn-primary">View More</a>
+                        <a onclick ="mostPopularSearch()" class="btn btn-lg btn-primary">View More</a>
                     </div>
                 </div>
             </div>
