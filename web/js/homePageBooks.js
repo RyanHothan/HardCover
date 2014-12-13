@@ -2,7 +2,7 @@ jQuery(function ($) {
     
     window.onhashchange = function(){
     var what_to_do = document.location.hash;    
-    if (what_to_do=="#show_picture")
+    if (what_to_do==="#show_picture")
         show_picture();
 }
 

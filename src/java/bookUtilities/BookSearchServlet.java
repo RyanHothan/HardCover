@@ -54,52 +54,100 @@ public class BookSearchServlet extends HttpServlet
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
 
             Statement st = con.createStatement();
-            
-            String query="SELECT * " 
-                    + "FROM HardCover.dbo.Book JOIN HardCover.dbo.Author "
-                    + "ON HardCover.dbo.Book.BookUuid = HardCover.dbo.Author.BookId "
-                    + "JOIN HardCover.dbo.Genre ON HardCover.dbo.Book.BookUuid = HardCover.dbo.Genre.BookId "
-                    + "WHERE FREETEXT((Title, Publisher, BookDescription, BookLanguage), '" 
-                    + searchPhrase + "') OR FREETEXT(AuthorName,'" + searchPhrase 
-                    + "') OR FREETEXT(Genre,'" + searchPhrase + "') "
-                    + " ORDER BY Title;";
-            
-            ResultSet rs = st.executeQuery(query);
-            String oldTitle = "";
-            String oldAuthor = "";
-            while(rs.next())
+            if (searchPhrase.equals("newest"))
             {
-                JSONObject bookToAdd = new JSONObject();
-                String newTitle = rs.getString("Title");
-                String newAuthor = rs.getString("AuthorName");
-                if(oldTitle.equals(newTitle))
+                String query = "SELECT * "
+                        + "FROM [HardCover].[dbo].[Book] "
+                        + "ORDER BY DateAdded DESC;";
+
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next())
                 {
-                    if(!(oldAuthor.equals(newAuthor)))
+                    Statement st2 = con.createStatement();
+                    String bookId = rs.getString("BookUuid");
+                    query = "SELECT AuthorName "
+                            + "FROM [HardCover].[dbo].[Author] "
+                            + "WHERE BookId = '" + bookId + "';";
+                    ResultSet rs2 = st2.executeQuery(query);
+                    rs2.next();
+                    JSONObject bookToAdd = new JSONObject();
+                    bookToAdd.put("bookId", bookId);
+                    bookToAdd.put("title", rs.getString("Title"));
+                    bookToAdd.put("cover", rs.getString("Cover"));
+                    bookToAdd.put("author", rs2.getString("AuthorName"));
+                    booksToReturn.add(bookToAdd);
+                }
+            } else if (searchPhrase.equals("popular"))
+            {
+                String query = "SELECT * "
+                        + "FROM [HardCover].[dbo].[Book] "
+                        + "ORDER BY TimesBorrowed;";
+
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next())
+                {
+                    Statement st2 = con.createStatement();
+                    String bookId = rs.getString("BookUuid");
+                    query = "SELECT AuthorName "
+                            + "FROM [HardCover].[dbo].[Author] "
+                            + "WHERE BookId = '" + bookId + "';";
+                    ResultSet rs2 = st2.executeQuery(query);
+                    rs2.next();
+                    JSONObject bookToAdd = new JSONObject();
+                    bookToAdd.put("bookId", bookId);
+                    bookToAdd.put("title", rs.getString("Title"));
+                    bookToAdd.put("cover", rs.getString("Cover"));
+                    bookToAdd.put("author", rs2.getString("AuthorName"));
+                    booksToReturn.add(bookToAdd);
+                }
+            } else
+            {
+                String query = "SELECT * "
+                        + "FROM HardCover.dbo.Book JOIN HardCover.dbo.Author "
+                        + "ON HardCover.dbo.Book.BookUuid = HardCover.dbo.Author.BookId "
+                        + "JOIN HardCover.dbo.Genre ON HardCover.dbo.Book.BookUuid = HardCover.dbo.Genre.BookId "
+                        + "WHERE FREETEXT((Title, Publisher, BookDescription, BookLanguage), '"
+                        + searchPhrase + "') OR FREETEXT(AuthorName,'" + searchPhrase
+                        + "') OR FREETEXT(Genre,'" + searchPhrase + "') "
+                        + " ORDER BY Title;";
+
+                ResultSet rs = st.executeQuery(query);
+                String oldTitle = "";
+                String oldAuthor = "";
+                while (rs.next())
+                {
+                    JSONObject bookToAdd = new JSONObject();
+                    String newTitle = rs.getString("Title");
+                    String newAuthor = rs.getString("AuthorName");
+                    if (oldTitle.equals(newTitle))
                     {
-                        bookToAdd = ((JSONObject)booksToReturn.remove(booksToReturn.size()-1));
-                        bookToAdd.put("author", bookToAdd.get("author") + ", " + newAuthor);
+                        if (!(oldAuthor.equals(newAuthor)))
+                        {
+                            bookToAdd = ((JSONObject) booksToReturn.remove(booksToReturn.size() - 1));
+                            bookToAdd.put("author", bookToAdd.get("author") + ", " + newAuthor);
+                            oldAuthor = newAuthor;
+                            booksToReturn.add(bookToAdd);
+                        }
+                    } else
+                    {
+                        bookToAdd.put("bookId", rs.getString("BookUuid"));
+                        bookToAdd.put("title", newTitle);
+                        bookToAdd.put("cover", rs.getString("Cover"));
+                        bookToAdd.put("author", newAuthor);
+                        oldTitle = newTitle;
                         oldAuthor = newAuthor;
                         booksToReturn.add(bookToAdd);
                     }
                 }
-                else
-                {
-                    bookToAdd.put("bookId", rs.getString("BookUuid"));
-                    bookToAdd.put("title", newTitle);
-                    bookToAdd.put("cover", rs.getString("Cover"));
-                    bookToAdd.put("author", newAuthor);
-                    oldTitle = newTitle;
-                    oldAuthor = newAuthor;
-                    booksToReturn.add(bookToAdd);
-                }
             }
-        }
-        catch(Exception e)
+
+        } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
         return booksToReturn;
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
