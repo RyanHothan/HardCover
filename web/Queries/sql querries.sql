@@ -33,6 +33,7 @@ CheckedOutBooksId INT NOT NULL IDENTITY(1,1),
 RegisteredUserId UNIQUEIDENTIFIER NOT NULL,
 BookId UNIQUEIDENTIFIER NOT NULL,
 ExpirationDate DATETIME NOT NULL,
+Expired BIT NOT NULL,
 PRIMARY KEY(CheckedOutBooksId),
 FOREIGN KEY (RegisteredUserId) REFERENCES RegisteredUser(RegisteredUserId),
 FOREIGN KEY (BookId) REFERENCES Book(BookUuid)

@@ -14,7 +14,7 @@ public class UpdateDatabaseBooks implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent event) {
         scheduler = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(new DatabaseUpdater(), 0, 5, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(new DatabaseUpdater(), 0, 10, TimeUnit.SECONDS);
     }
 
     @Override
