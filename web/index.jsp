@@ -31,7 +31,6 @@
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/viewMore.js'></script>
 
- 
     </head>
     <body>
         <c:choose>
@@ -172,5 +171,4 @@
             </div>
         </div>
     </body>
-
 </html>

@@ -19,7 +19,10 @@ function quickSearch(e, me)
     if (e.keyCode === 13)
     {
         window.location = "/HardCover/HardCover-browse.jsp#" + me.val();
-        populateSearch();
+        if (window.location.pathname !== "/HardCover/")
+        {
+            populateSearch();
+        }
     }
 }
 ;
@@ -27,8 +30,13 @@ function quickSearch(e, me)
 function quickSearchButton(me)
 {
     window.location = "/HardCover/HardCover-browse.jsp#" + me.val();
-    populateSearch();
-};
+    if (window.location.pathname !== "/HardCover/")
+    {
+        populateSearch();
+    }
+}
+;
+
 function populateSearch() {
     $("#bookSearchResultsView").empty();
 
@@ -51,6 +59,11 @@ function populateSearch() {
                 }
                 var title = data[i].title;
                 if (title.length > 20)
+                {
+                    title = title.substring(0, 17) + "...";
+                }
+                var author = data[i].author;
+                if (author.length > 20)
                 {
                     title = title.substring(0, 17) + "...";
                 }
