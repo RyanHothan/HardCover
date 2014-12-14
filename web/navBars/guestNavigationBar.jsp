@@ -1,7 +1,7 @@
 <div class="navbar navbar-default navbar-static-top navbar-inverse">
     <div class="container"> 
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.jsp">
+            <a class="navbar-brand" href="/HardCover">
                 <span class="fa fa-book"></span> HardCover
             </a>
         </div>

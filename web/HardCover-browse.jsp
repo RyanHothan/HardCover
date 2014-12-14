@@ -18,7 +18,7 @@
         <link type='text/css' href='css/demo.css' rel='stylesheet' media='screen' />
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
-        
+
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
@@ -26,6 +26,7 @@
         <script type='text/javascript' src='js/browseBooks.js'></script>
         <script type='text/javascript' src='js/basic.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
+        <script type='text/javascript' src='js/advancedSearch.js'></script>
     </head>
     <body>
 
@@ -44,7 +45,7 @@
                     <hr>
                 </div>
             </div>
-            <div class="row">
+            <div id="filterDiv" class="row">
                 <div class="col-md-3" style="padding-right:20px; border-right: 1px solid #ccc;">
                     <div class="row">
                         <h3>Filter</h3>
@@ -52,41 +53,36 @@
                     </div>
                     <div class="row">
                         <h3>Search</h3>
-                        <h4>Author<input type="search" name="vehicle" ></h4>
-                        <h4>Title<input type="search" name="vehicle" ></h4>
-                    </div>
-                    <div class="row">
+                        <h4>Author<input id = "authorSearch" type="search" ></h4>
+                        <h4>Title<input id = "titleSearch" type="search"  ></h4>
                         <h3>Genre</h3>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Fantasy<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Biography<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Science Fiction<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Adult<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">For Dummies<br></h4>
+                    </div>
+                    <div id ="genreList" class="row">
+                        <h4><input type="checkbox" >Fantasy<br></h4>
+                        <h4><input type="checkbox" >Biography<br></h4>
+                        <h4><input type="checkbox" >Science Fiction<br></h4>
+                        <h4><input type="checkbox" value = "Adventure">Adventure<br></h4>
+                        <h4><input type="checkbox" value = "Fantasy">Fantasy<br></h4>
+                        <h4><input type="checkbox" value="Children">Children<br></h4>
                     </div>
                     <div class="row">
                         <h3>Availability</h3>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Available Only<br></h4>
+                        <h4><input type="checkbox" >Available Only<br></h4>
                     </div> 
                     <div class="row">
-                        <h3> Age Group </h3>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Age 4-12<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Age 13-17<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">Age 18+<br></h4>
+                        <h3> Format </h3>
+                        <h4><input type="checkbox" >.PDF File<br></h4>
+                        <h4><input type="checkbox" >EPUB File<br></h4>
+                        <h4><input type="checkbox" >AZW File<br></h4>
+                        <h4><input type="checkbox" >In Browser File<br></h4>
                     </div>
                     <div class="row">
-                        <h3> Format </h3>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">.PDF File<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">EPUB File<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">AZW File<br></h4>
-                        <h4><input type="checkbox" name="vehicle" value="Bike">In Browser File<br></h4>
+                        <a onclick ="advancedSearch()" class="btn btn-lg btn-primary">Submit</a>
                     </div>
-
                 </div>
                 <div id = "bookSearchResultsView" class="col-md-9">
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

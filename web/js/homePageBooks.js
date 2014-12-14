@@ -1,11 +1,10 @@
 jQuery(function ($) {
     
-    window.onhashchange = function(){
-    var what_to_do = document.location.hash;    
-    if (what_to_do==="#show_picture")
-        show_picture();
-}
-
+//    window.onhashchange = function(){
+//    var what_to_do = document.location.hash;    
+//    if (what_to_do==="#show_picture")
+//        show_picture();
+//};
     $.ajax({
         url: '/HardCover/HomePageBooksServlet',
         type: 'GET',
@@ -23,8 +22,13 @@ jQuery(function ($) {
                 {
                     title = title.substring(0, 17) + "...";
                 }
+                var author = data[i].author;
+                if (author.length > 20)
+                {
+                    title = title.substring(0, 17) + "...";
+                }
                 $("#newestBookTitle" + i).html(title);
-                $("#newestBookAuthor" + i).html(data[i].author);
+                $("#newestBookAuthor" + i).html(author);
                 $("#newestBookCover" + i).on('click', function()
                         {
                             populateModal($(this));
@@ -40,8 +44,13 @@ jQuery(function ($) {
                 {
                     title = title.substring(0, 17) + "...";
                 }
+                var author = data[i].author;
+                if (author.length > 20)
+                {
+                    title = title.substring(0, 17) + "...";
+                }
                 $("#popularBookTitle" + (i - 4)).html(title);
-                $("#popularBookAuthor" + (i - 4)).html(data[i].author);
+                $("#popularBookAuthor" + (i - 4)).html(author);
                 $("#popularBookCover" + (i - 4)).on('click',function()
                         {
                             populateModal($(this));
