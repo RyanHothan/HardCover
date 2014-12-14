@@ -103,6 +103,7 @@ public class BookSearchServlet extends HttpServlet
                     }
                     JSONObject bookToAdd = new JSONObject();
                     bookToAdd.put("bookId", bookId);
+                    bookToAdd.put("numCopies", rs.getString("NumCopies"));
                     bookToAdd.put("title", rs.getString("Title"));
                     bookToAdd.put("cover", rs.getString("Cover"));
                     bookToAdd.put("author", authors);
@@ -153,6 +154,7 @@ public class BookSearchServlet extends HttpServlet
                     }
                     JSONObject bookToAdd = new JSONObject();
                     bookToAdd.put("bookId", bookId);
+                    bookToAdd.put("numCopies", rs.getString("NumCopies"));
                     bookToAdd.put("title", rs.getString("Title"));
                     bookToAdd.put("cover", rs.getString("Cover"));
                     bookToAdd.put("author", authors);
@@ -199,6 +201,7 @@ public class BookSearchServlet extends HttpServlet
                     } else
                     {
                         bookToAdd.put("bookId", rs.getString("BookUuid"));
+                        bookToAdd.put("numCopies", rs.getString("NumCopies"));
                         bookToAdd.put("title", newTitle);
                         bookToAdd.put("cover", rs.getString("Cover"));
                         bookToAdd.put("author", newAuthor);
