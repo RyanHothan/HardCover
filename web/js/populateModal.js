@@ -18,10 +18,6 @@ function populateModal(book)
             var genres = data.genres;
             $("#modalTitle").html(title + " by " + authors);
             $("#modalImage").attr('src', cover);
-            if(description.length > 500)
-            {
-                description = description.substring(0,497) + "...";
-            }
             $("#modalDescription").html(description);
             $("#modalPublisher").html("Publisher: " + publisher);
             $("#modalLanguage").html("Language: " + language);

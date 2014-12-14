@@ -1,10 +1,28 @@
 <div id="basic-modal-register">
-    <div style="max-width: 70%; font-size: 14px">
-        <div>First Name: </div><input type="text" placeholder="First Name" id="firstName"/><br/><br/>
-        <div>Last Name: </div><input type="text" placeholder="Last Name" id="lastName"/><br/><br/>
-        <div>Email: </div><input type="Email" placeholder="Email" id="email"/><br/><br/>
-        <div>Password: </div><input type="password" placeholder="Password" id="password"/><br/><br/>
-        <div>Library Card #: </div><input type="text" placeholder="Library Card Number" id="libraryCardNum"/><br/><br/>
+    <form class ="pure-form pure-form-aligned">
+        <h1>Register</h1>
+        <fieldset>
+        <div class="pure-control-group">
+            <label>First Name</label> <input type="text" placeholder="First Name" id="firstName"/>
+        </div>
+        <div class="pure-control-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last Name" id="lastName"/>
+        </div>
+    <div class="pure-control-group">
+        <label>Email</label> 
+        <input type="Email" placeholder="Email" id="email"/>
     </div>
-    <button class ="btn btn-default" type="button" onclick="registerUser()" id ="registerUserButton" style="float:right">Register</button>
+    <div class="pure-control-group">
+        <label>Password</label> 
+        <input type="password" placeholder="Password" id="password"/>
+    </div>
+    <div class="pure-control-group">
+        <label>Library Card #</label>
+        <input type="text" placeholder="Library Card Number" id="libraryCardNum"/>
+    </div>
+            <button class ="pure-button pure-input-1-2 pure-button-primary" type="button" onclick="registerUser()" id ="registerUserButton" style="float:right">Register</button>
+        </fieldset>
+</form>
+
 </div>

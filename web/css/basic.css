@@ -7,6 +7,26 @@
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  */
+body{
+    background-image: url('../img/backgroundfix.jpg');
+}
+
+.thumbnail{
+    height:420px; 
+    width: 270px; 
+    background-color:black;
+    
+}
+
+.container-non-responsive {
+  /* Margin/padding copied from Bootstrap */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  /* Set width to your desired site width */
+}
 
 #basic-modal-content {display:none;}
 #basic-modal-register {display:none;}
@@ -19,9 +39,16 @@
 #simplemodal-overlay {background-color:#000;}
 
 /* Container */
-#simplemodal-container {height:440px; width:600px; color:#bbb; background-color:#333; border:2px solid #444; padding:8px;}
+#simplemodal-container {height:680px; width:900px; color:#bbb; background-color:#333; border:2px solid #444; padding:8px;}
 #simplemodal-container .simplemodal-data {padding:8px;}
 #simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;}
 #simplemodal-container a {color:#ddd;}
 #simplemodal-container a.modalCloseImg {background:url(../img/basic/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
 #simplemodal-container h3 {color:#84b8d9;}
+
+#simplemodal-container-register {height:680px; width:900px; color:#bbb; background-color:#333; border:2px solid #444; padding:8px;}
+#simplemodal-container-register .simplemodal-data {padding:8px;}
+#simplemodal-container-register code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;}
+#simplemodal-container-register a {color:#ddd;}
+#simplemodal-container-register a.modalCloseImg {background:url(../img/basic/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+#simplemodal-container-register h3 {color:#84b8d9;}

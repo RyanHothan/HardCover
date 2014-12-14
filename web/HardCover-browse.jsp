@@ -39,24 +39,24 @@
         </c:choose>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h1>Browse Books</h1>
+                <div class="col-md-12" >
+                    <h1 style="color: white">Browse Books</h1>
                     <hr>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3" style="padding-right:20px; border-right: 1px solid #ccc;">
+                <div class="col-md-3" style="padding-right:20px; padding-left:20px;border-right: 1px solid #ccc; color:white; background-color:black; border-style:solid; border-width: 1px">
                     <div class="row">
                         <h3>Filter</h3>
                         <hr>
                     </div>
                     <div class="row">
                         <h3>Search</h3>
-                        <h4>Author<input type="search" name="vehicle" ></h4>
-                        <h4>Title<input type="search" name="vehicle" ></h4>
+                        <h4>Author</h4><input type="search" name="vehicle" >
+                        <h4>Title</h4><input type="search" name="vehicle" >
                     </div>
                     <div class="row">
-                        <h3>Genre</h3>
+                        <h3 >Genre</h3>
                         <h4><input type="checkbox" name="vehicle" value="Bike">Fantasy<br></h4>
                         <h4><input type="checkbox" name="vehicle" value="Bike">Biography<br></h4>
                         <h4><input type="checkbox" name="vehicle" value="Bike">Science Fiction<br></h4>
@@ -68,13 +68,13 @@
                         <h4><input type="checkbox" name="vehicle" value="Bike">Available Only<br></h4>
                     </div> 
                     <div class="row">
-                        <h3> Age Group </h3>
+                        <h3 > Age Group </h3>
                         <h4><input type="checkbox" name="vehicle" value="Bike">Age 4-12<br></h4>
                         <h4><input type="checkbox" name="vehicle" value="Bike">Age 13-17<br></h4>
                         <h4><input type="checkbox" name="vehicle" value="Bike">Age 18+<br></h4>
                     </div>
-                    <div class="row">
-                        <h3> Format </h3>
+                    <div class="row" style="color:white">
+                        <h3 > Format </h3>
                         <h4><input type="checkbox" name="vehicle" value="Bike">.PDF File<br></h4>
                         <h4><input type="checkbox" name="vehicle" value="Bike">EPUB File<br></h4>
                         <h4><input type="checkbox" name="vehicle" value="Bike">AZW File<br></h4>
@@ -86,7 +86,5 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 </body>
 </html>
