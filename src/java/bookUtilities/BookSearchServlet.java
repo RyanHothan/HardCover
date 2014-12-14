@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,6 +23,10 @@ import org.json.simple.JSONObject;
  *
  * @author Ryan Hothan
  */
+@WebServlet(name = "BookSearchServlet", urlPatterns =
+{
+    "/BookSearchServlet"
+})
 public class BookSearchServlet extends HttpServlet
 {
 
@@ -63,18 +68,45 @@ public class BookSearchServlet extends HttpServlet
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next())
                 {
-                    Statement st2 = con.createStatement();
                     String bookId = rs.getString("BookUuid");
+                    Statement st2 = con.createStatement();
                     query = "SELECT AuthorName "
                             + "FROM [HardCover].[dbo].[Author] "
                             + "WHERE BookId = '" + bookId + "';";
                     ResultSet rs2 = st2.executeQuery(query);
-                    rs2.next();
+                    String authors = "";
+                    while (rs2.next())
+                    {
+                        if (authors.isEmpty())
+                        {
+                            authors = rs2.getString("AuthorName");
+                        } else
+                        {
+                            authors = authors + ", " + rs2.getString("AuthorName");
+                        }
+                    }
+                    Statement st3 = con.createStatement();
+                    query = "SELECT Genre "
+                            + "FROM [HardCover].[dbo].[Genre] "
+                            + "WHERE BookId = '" + bookId + "';";
+                    ResultSet rs3 = st3.executeQuery(query);
+                    String genres = "";
+                    while (rs3.next())
+                    {
+                        if (genres.isEmpty())
+                        {
+                            genres = rs3.getString("Genre");
+                        } else
+                        {
+                            genres = genres + ", " + rs3.getString("Genre");
+                        }
+                    }
                     JSONObject bookToAdd = new JSONObject();
                     bookToAdd.put("bookId", bookId);
                     bookToAdd.put("title", rs.getString("Title"));
                     bookToAdd.put("cover", rs.getString("Cover"));
-                    bookToAdd.put("author", rs2.getString("AuthorName"));
+                    bookToAdd.put("author", authors);
+                    bookToAdd.put("genres", genres);
                     booksToReturn.add(bookToAdd);
                 }
             } else if (searchPhrase.equals("popular"))
@@ -86,18 +118,45 @@ public class BookSearchServlet extends HttpServlet
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next())
                 {
-                    Statement st2 = con.createStatement();
                     String bookId = rs.getString("BookUuid");
+                    Statement st2 = con.createStatement();
                     query = "SELECT AuthorName "
                             + "FROM [HardCover].[dbo].[Author] "
                             + "WHERE BookId = '" + bookId + "';";
                     ResultSet rs2 = st2.executeQuery(query);
-                    rs2.next();
+                    String authors = "";
+                    while (rs2.next())
+                    {
+                        if (authors.isEmpty())
+                        {
+                            authors = rs2.getString("AuthorName");
+                        } else
+                        {
+                            authors = authors + ", " + rs2.getString("AuthorName");
+                        }
+                    }
+                    Statement st3 = con.createStatement();
+                    query = "SELECT Genre "
+                            + "FROM [HardCover].[dbo].[Genre] "
+                            + "WHERE BookId = '" + bookId + "';";
+                    ResultSet rs3 = st3.executeQuery(query);
+                    String genres = "";
+                    while (rs3.next())
+                    {
+                        if (genres.isEmpty())
+                        {
+                            genres = rs3.getString("Genre");
+                        } else
+                        {
+                            genres = genres + ", " + rs3.getString("Genre");
+                        }
+                    }
                     JSONObject bookToAdd = new JSONObject();
                     bookToAdd.put("bookId", bookId);
                     bookToAdd.put("title", rs.getString("Title"));
                     bookToAdd.put("cover", rs.getString("Cover"));
-                    bookToAdd.put("author", rs2.getString("AuthorName"));
+                    bookToAdd.put("author", authors);
+                    bookToAdd.put("genres", genres);
                     booksToReturn.add(bookToAdd);
                 }
             } else
@@ -114,11 +173,13 @@ public class BookSearchServlet extends HttpServlet
                 ResultSet rs = st.executeQuery(query);
                 String oldTitle = "";
                 String oldAuthor = "";
+                String oldGenre = "";
                 while (rs.next())
                 {
                     JSONObject bookToAdd = new JSONObject();
                     String newTitle = rs.getString("Title");
                     String newAuthor = rs.getString("AuthorName");
+                    String newGenre = rs.getString("Genre");
                     if (oldTitle.equals(newTitle))
                     {
                         if (!(oldAuthor.equals(newAuthor)))
@@ -128,14 +189,23 @@ public class BookSearchServlet extends HttpServlet
                             oldAuthor = newAuthor;
                             booksToReturn.add(bookToAdd);
                         }
+                        else if (!(oldGenre.equals(newGenre)))
+                        {
+                            bookToAdd = ((JSONObject) booksToReturn.remove(booksToReturn.size() - 1));
+                            bookToAdd.put("genres", bookToAdd.get("genres") + ", " + newGenre);
+                            oldGenre = newGenre;
+                            booksToReturn.add(bookToAdd);
+                        }
                     } else
                     {
                         bookToAdd.put("bookId", rs.getString("BookUuid"));
                         bookToAdd.put("title", newTitle);
                         bookToAdd.put("cover", rs.getString("Cover"));
                         bookToAdd.put("author", newAuthor);
+                        bookToAdd.put("genres", newGenre);
                         oldTitle = newTitle;
                         oldAuthor = newAuthor;
+                        oldGenre = newGenre;
                         booksToReturn.add(bookToAdd);
                     }
                 }
