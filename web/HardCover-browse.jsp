@@ -46,15 +46,15 @@
                 </div>
             </div>
             <div id="filterDiv" class="row">
-                <div class="col-md-3" style="padding-right:20px; border-right: 1px solid #ccc;">
+                <div class="col-md-3" style="background-color: black; color: white; border-style: solid; border-width: 1px">
                     <div class="row">
                         <h3>Filter</h3>
                         <hr>
                     </div>
                     <div class="row">
                         <h3>Search</h3>
-                        <h4>Author<input id = "authorSearch" type="search" ></h4>
-                        <h4>Title<input id = "titleSearch" type="search"  ></h4>
+                        <h4>Author</h4><input id = "authorSearch" type="search" >
+                        <h4>Title</h4><input id = "titleSearch" type="search"  >
                         <h3>Genre</h3>
                     </div>
                     <div id ="genreList" class="row">
