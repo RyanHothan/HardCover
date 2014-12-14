@@ -58,16 +58,10 @@
                         <h3>Genre</h3>
                     </div>
                     <div id ="genreList" class="row">
-                        <h4><input type="checkbox" >Fantasy<br></h4>
-                        <h4><input type="checkbox" >Biography<br></h4>
-                        <h4><input type="checkbox" >Science Fiction<br></h4>
-                        <h4><input type="checkbox" value = "Adventure">Adventure<br></h4>
-                        <h4><input type="checkbox" value = "Fantasy">Fantasy<br></h4>
-                        <h4><input type="checkbox" value="Children">Children<br></h4>
                     </div>
                     <div class="row">
                         <h3>Availability</h3>
-                        <h4><input type="checkbox" >Available Only<br></h4>
+                        <h4><input id="availableCheckBox" type="checkbox" >Available Only<br></h4>
                     </div> 
                     <div class="row">
                         <h3> Format </h3>

@@ -14,6 +14,13 @@ jQuery(function ($) {
         advancedSearch();
     });
 });
+
+jQuery(function ($) {
+    $("#availableCheckBox").click(function (e)
+    {
+        advancedSearch();
+    });
+});
 function advancedSearch()
 {
 
@@ -35,6 +42,10 @@ function advancedSearch()
             window.location.hash = window.location.hash + ", " + $(genreList[i]).val();
         }
         window.location.hash = window.location.hash + "?";
+    }
+    if($("#availableCheckBox").prop('checked'))
+    {
+        window.location.hash = window.location.hash + "avail=true?";
     }
     $("#bookSearchResultsView").empty();
     var hash = window.location.hash;
@@ -104,6 +115,19 @@ function advancedSearch()
             }
             newBookResults = tempBookList;
         }
+    }
+    
+    if(hash.indexOf("avail=true") >=0)
+    {
+        var tempBookList = [];
+        for(i = 0; i < newBookResults.length; i++)
+        {
+            if(newBookResults[i].numCopies > 0)
+            {
+                tempBookList.push(newBookResults[i]);   
+            }
+        }
+        newBookResults = tempBookList;
     }
     var rowNum;
     for (i = 0; i < newBookResults.length; i++)
