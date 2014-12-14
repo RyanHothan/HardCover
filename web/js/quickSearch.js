@@ -70,8 +70,8 @@ function populateSearch() {
                 $("#booksSearchResultsRow" + rowNum).append(
                         "<div class='col-md-4' >"
                         + "<div class='thumbnail' >"
-                        + "<a href='#'>"
-                        + "<input id='booksSearchResult" + i + "'type='image' value='" + data[i].bookId + "' src='" + data[i].cover + "' class='basic' style='display:block; margin-left: auto; margin-right: auto'>"
+                        + "<a href='#' class='basic'>"
+                        + "<input id='booksSearchResult" + i + "'type='image' value='" + data[i].bookId + "' src='" + data[i].cover + "'  style='display:block; margin-left: auto; margin-right: auto'>"
                         + "</a>"
                         + "<div class='caption' style='position:absolute; bottom: 10px;'>"
                         + "<h4 style ='color: white'>" + title + "</h4>"

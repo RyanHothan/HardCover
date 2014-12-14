@@ -145,14 +145,14 @@ function advancedSearch()
             title = title.substring(0, 17) + "...";
         }
         $("#booksSearchResultsRow" + rowNum).append(
-                "<div class='col-md-4'>"
-                + "<div class='thumbnail'>"
-                + "<a href='#'>"
-                + "<input id='booksSearchResult" + i + "'type='image' value='" + newBookResults[i].bookId + "' src='" + newBookResults[i].cover + "' class='basic'>"
+                "<div class='col-md-4' >"
+                + "<div class='thumbnail' >"
+                + "<a href='#' class='basic'>"
+                + "<input id='booksSearchResult" + i + "'type='image' value='" + newBookResults[i].bookId + "' src='" + newBookResults[i].cover + "' style='display:block; margin-left: auto; margin-right: auto'>"
                 + "</a>"
-                + "<div class='caption'>"
-                + "<h4>" + title + "</h4>"
-                + "<p>" + newBookResults[i].author + "</p>"
+                + "<div class='caption' style='position:absolute; bottom: 10px;'>"
+                + "<h4 style ='color: white'>" + title + "</h4>"
+                + "<p style ='color: white; font-size:14px'>" + newBookResults[i].author + "</p>"
                 + "</div>"
                 + "</div>"
                 + "</div>");

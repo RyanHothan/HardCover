@@ -8,7 +8,10 @@
  *   http://www.opensource.org/licenses/mit-license.php
  */
 body{
-    background-image: url('../img/backgroundfix.jpg');
+    background-image: url('../img/backgroundfix4_1.jpg');
+    background-attachment: fixed;
+    background-size: 100%;
+    
 }
 
 .thumbnail{
@@ -16,6 +19,15 @@ body{
     width: 270px; 
     background-color:black;
     
+}
+
+.caption h4{
+    color: white;
+}
+
+.caption p{
+    color: white; 
+    font-size:12px
 }
 
 .container-non-responsive {
@@ -46,9 +58,3 @@ body{
 #simplemodal-container a.modalCloseImg {background:url(../img/basic/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
 #simplemodal-container h3 {color:#84b8d9;}
 
-#simplemodal-container-register {height:680px; width:900px; color:#bbb; background-color:#333; border:2px solid #444; padding:8px;}
-#simplemodal-container-register .simplemodal-data {padding:8px;}
-#simplemodal-container-register code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;}
-#simplemodal-container-register a {color:#ddd;}
-#simplemodal-container-register a.modalCloseImg {background:url(../img/basic/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
-#simplemodal-container-register h3 {color:#84b8d9;}

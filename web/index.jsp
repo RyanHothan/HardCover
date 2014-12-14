@@ -30,6 +30,7 @@
         <script type='text/javascript' src='js/quickSearch.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/viewMore.js'></script>
+        <script type='text/javascript' src='js/logOut.js'></script>
 
     </head>
     <body>
@@ -58,8 +59,8 @@
                             <input type = "image" src="" id="newestBookCover0" style='display:block; margin-left: auto; margin-right: auto'>
                         </a>
                         <div class="caption" style='position:absolute; bottom: 10px;'>
-                            <h4 id = "newestBookTitle0" style ='color: white'></h4>
-                            <p id = "newestBookAuthor0" style ='color: white; font-size:14px'></p>
+                            <h4 id = "newestBookTitle0" ></h4>
+                            <p id = "newestBookAuthor0" ></p>
                         </div>
                     </div>
                 </div>
@@ -69,8 +70,8 @@
                             <input type = "image" src="" id="newestBookCover1" style='display:block; margin-left: auto; margin-right: auto'>
                         </a>
                         <div class="caption" style='position:absolute; bottom: 10px;'>
-                            <h4 id = "newestBookTitle1" style ='color: white'></h4>
-                            <p id = "newestBookAuthor1" style ='color: white; font-size:14px'></p>
+                            <h4 id = "newestBookTitle1" ></h4>
+                            <p id = "newestBookAuthor1" ></p>
                         </div>
                     </div>
                 </div>
@@ -80,8 +81,8 @@
                             <input type = "image" src="" id="newestBookCover2" style='display:block; margin-left: auto; margin-right: auto'>
                         </a>
                         <div class="caption" style='position:absolute; bottom: 10px;'>
-                            <h4 id = "newestBookTitle2" style ='color: white'></h4>
-                            <p id = "newestBookAuthor2" style ='color: white; font-size:14px'></p>
+                            <h4 id = "newestBookTitle2" ></h4>
+                            <p id = "newestBookAuthor2" ></p>
                         </div>
                     </div>
                 </div>
@@ -91,8 +92,8 @@
                             <input type = "image" src="" id="newestBookCover3" style='display:block; margin-left: auto; margin-right: auto'>
                         </a>
                         <div class="caption" style='position:absolute; bottom: 10px;'>
-                            <h4 id = "newestBookTitle3" style ='color: white'></h4>
-                            <p id = "newestBookAuthor3" style ='color: white; font-size:14px'></p>
+                            <h4 id = "newestBookTitle3" ></h4>
+                            <p id = "newestBookAuthor3" ></p>
                         </div>
                     </div>
                 </div>
@@ -116,8 +117,8 @@
                             <input type = "image" src="" id="popularBookCover0" style='display:block; margin-left: auto; margin-right: auto'>
                         </a>
                         <div class="caption" style='position:absolute; bottom: 10px;'>
-                            <h4 id = "popularBookTitle0" style ='color: white'></h4>
-                            <p id = "popularBookAuthor0" style ='color: white; font-size:14px'></p>
+                            <h4 id = "popularBookTitle0" ></h4>
+                            <p id = "popularBookAuthor0" ></p>
                         </div>
                     </div>
                 </div>
@@ -127,8 +128,8 @@
                             <input type = "image" src="" id="popularBookCover1" style='display:block; margin-left: auto; margin-right: auto'>
                         </a>
                         <div class="caption" style='position:absolute; bottom: 10px;'>
-                            <h4 id = "popularBookTitle1" style ='color: white'></h4>
-                            <p id = "popularBookAuthor1" style ='color: white; font-size:14px'></p>
+                            <h4 id = "popularBookTitle1" ></h4>
+                            <p id = "popularBookAuthor1" '></p>
                         </div>
                     </div>
                 </div>
@@ -138,8 +139,8 @@
                             <input type = "image" src="" id="popularBookCover2" style='display:block; margin-left: auto; margin-right: auto'>
                         </a>
                         <div class="caption" style='position:absolute; bottom: 10px;'>
-                            <h4 id = "popularBookTitle2" style ='color: white'></h4>
-                            <p id = "popularBookAuthor2" style ='color: white; font-size:14px'></p>
+                            <h4 id = "popularBookTitle2" ></h4>
+                            <p id = "popularBookAuthor2" ></p>
                         </div>
                     </div>
                 </div>
@@ -149,8 +150,8 @@
                             <input type = "image" src="" id="popularBookCover3" style='display:block; margin-left: auto; margin-right: auto'>
                         </a>
                         <div class="caption" style='position:absolute; bottom: 10px;'>
-                            <h4 id = "popularBookTitle3" style ='color: white'></h4>
-                            <p id = "popularBookAuthor3" style ='color: white; font-size:14px'></p>
+                            <h4 id = "popularBookTitle3" ></h4>
+                            <p id = "popularBookAuthor3" ></p>
                         </div>
                     </div>
                 </div>

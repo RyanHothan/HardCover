@@ -1,28 +1,29 @@
 <div id="basic-modal-register">
     <form class ="pure-form pure-form-aligned">
-        <h1>Register</h1>
+        <h1 style="text-align: center">Register</h1>
         <fieldset>
         <div class="pure-control-group">
-            <label>First Name</label> <input type="text" placeholder="First Name" id="firstName"/>
+             <input type="text" placeholder="First Name" id="firstName" style="width: 100%"/>
         </div>
         <div class="pure-control-group">
-            <label>Last Name</label>
-            <input type="text" placeholder="Last Name" id="lastName"/>
+
+            <input type="text" placeholder="Last Name" id="lastName" style="width: 100%"/>
         </div>
     <div class="pure-control-group">
-        <label>Email</label> 
-        <input type="Email" placeholder="Email" id="email"/>
+        
+        <input type="Email" placeholder="Email" id="email" style="width: 100%"/>
     </div>
     <div class="pure-control-group">
-        <label>Password</label> 
-        <input type="password" placeholder="Password" id="password"/>
+        
+        <input type="password" placeholder="Password" id="password" style="width: 100%"/>
     </div>
     <div class="pure-control-group">
-        <label>Library Card #</label>
-        <input type="text" placeholder="Library Card Number" id="libraryCardNum"/>
+        
+        <input type="text" placeholder="Library Card Number" id="libraryCardNum" style="width: 100%"/>
     </div>
-            <button class ="pure-button pure-input-1-2 pure-button-primary" type="button" onclick="registerUser()" id ="registerUserButton" style="float:right">Register</button>
+            
         </fieldset>
+        <button class ="pure-button pure-input-1-2 pure-button-primary"  onclick="registerUser()" id ="registerUserButton" style="width: 100%">Register</button>
 </form>
 
 </div>

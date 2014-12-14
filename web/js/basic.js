@@ -20,7 +20,9 @@ jQuery(function ($) {
 	});
         
         $('#registerButton').on('click', function (e) {
-		$('#basic-modal-register').modal({overlayClose:true});
+		$('#basic-modal-register').modal({overlayClose:true,
+                    containerCss:{
+                height:400,width: 300}});
 
 		return false;
 	});
