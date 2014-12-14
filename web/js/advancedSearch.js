@@ -92,6 +92,8 @@ function advancedSearch()
         newBookResults = tempBookList;
     }
 
+
+
     if (hash.indexOf("+genre=") >= 0)
     {
         var startOfGenre = hash.indexOf("+genre=") + 7;
