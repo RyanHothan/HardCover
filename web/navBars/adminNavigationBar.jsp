@@ -29,9 +29,6 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="#">Account Settings</a>
-                            </li>
                             <li class="divider"></li>
                             <li>
                                 <input type="button" value="Log Out" onclick="logOut()">

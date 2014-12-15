@@ -10,7 +10,7 @@
                 <a href="HardCover-browse.jsp">Browse</a>
             </li>
             <li>
-                <a href="mybooks.jsp">My Books</a>
+                <a href="mybooks.jsp">My Account</a>
             </li>
         </ul>
         <div class="col-md-4 pull-right">
@@ -29,9 +29,6 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="#">Account Settings</a>
-                            </li>
                             <li class="divider"></li>
                             <li>
                                 <input type="button" value="Log Out" onclick="logOut()">

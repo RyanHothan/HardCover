@@ -6,5 +6,5 @@ function borrowBook(bookId)
         type: 'POST',
         data: {bookUuid : bookUuid},
         dataType: 'text'
-    })
+    });
 }
