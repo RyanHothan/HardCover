@@ -184,7 +184,7 @@ function drawNewBookResults(pageNumber)
 
             return false;
         });
-
+        counter++;
 
     }
     if (i < 9)

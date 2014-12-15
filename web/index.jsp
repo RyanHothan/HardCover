@@ -11,8 +11,6 @@
         <%@ page session="true" %>
         <title>HardCover eLibrary</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
               rel="stylesheet" type="text/css">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -37,6 +35,9 @@
         <c:choose>
             <c:when test="${empty email}">
                 <%@ include file="navBars/guestNavigationBar.jsp" %>
+            </c:when>
+            <c:when test = "${isAdmin}">
+                <%@ include file="navBars/adminNavigationBar.jsp" %>
             </c:when>
             <c:otherwise>
                 <%@ include file="navBars/registeredUserNavigationBar.jsp" %>

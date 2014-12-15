@@ -38,6 +38,9 @@
             <c:when test="${empty email}">
                 <%@ include file="navBars/guestNavigationBar.jsp" %>
             </c:when>
+            <c:when test = "${isAdmin}">
+                <%@ include file="navBars/adminNavigationBar.jsp" %>
+            </c:when>
             <c:otherwise>
                 <%@ include file="navBars/registeredUserNavigationBar.jsp" %>
             </c:otherwise>
