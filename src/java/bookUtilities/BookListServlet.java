@@ -61,7 +61,8 @@ public class BookListServlet extends HttpServlet
             Statement st = con.createStatement();
 
             String query = "SELECT * "
-                    + "FROM HardCover.dbo.Book ";
+                    + "FROM HardCover.dbo.Book "
+                    + "WHERE Active = 1";
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next())

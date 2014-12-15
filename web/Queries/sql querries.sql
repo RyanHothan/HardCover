@@ -24,7 +24,7 @@ NumCopies INT NOT NULL,
 TimesBorrowed INT NOT NULL DEFAULT 0,
 BookLanguage VARCHAR(30),
 BookDescription VARCHAR(MAX),
-Publisher VARCHAR(150)
+Publisher VARCHAR(150),
 Active BIT NOT NULL DEFAULT 1,
 PRIMARY KEY(Bookuuid)
 );
@@ -146,7 +146,7 @@ VALUES('Biography', @newId);
 
 SET @newId = NEWID();
 INSERT INTO Book 
-VALUES (@newId, 'Redeployment', 'http://i.imgur.com/iAARfck.jpg', GETDATE(), 5, DEFAULT, 'English', 'Phil Klay''s Redeployment takes readers to the frontlines of the wars in Iraq and Afghanistan, asking us to understand what happened there, and what happened to the soldiers who returned. Interwoven with themes of brutality and faith, guilt and fear, helplessness and survival, the characters in these stories struggle to make meaning out of chaos.' + CHAR(13) + 'In "Redeployment", a soldier who has had to shoot dogs because they were eating human corpses must learn what it is like to return to domestic life in suburbia, surrounded by people "who have no idea where Fallujah is, where three members of your platoon died." In "After Action Report", a Lance Corporal seeks expiation for a killing he didn''t commit, in order that his best friend will be unburdened. A Morturary Affairs Marine tells about his experiences collecting remains—of U.S. and Iraqi soldiers both. A chaplain sees his understanding of Christianity, and his ability to provide solace through religion, tested by the actions of a ferocious Colonel. And in the darkly comic "Money as a Weapons System", a young Foreign Service Officer is given the absurd task of helping Iraqis improve their lives by teaching them to play baseball. These stories reveal the intricate combination of monotony, bureaucracy, comradeship and violence that make up a soldier''s daily life at war, and the isolation, remorse, and despair that can accompany a soldier''s homecoming.', 'Penguin Press HC, The; First Edition edition');
+VALUES (@newId, 'Redeployment', 'http://i.imgur.com/iAARfck.jpg', GETDATE(), 5, DEFAULT, 'English', 'Phil Klay''s Redeployment takes readers to the frontlines of the wars in Iraq and Afghanistan, asking us to understand what happened there, and what happened to the soldiers who returned. Interwoven with themes of brutality and faith, guilt and fear, helplessness and survival, the characters in these stories struggle to make meaning out of chaos.' + CHAR(13) + 'In "Redeployment", a soldier who has had to shoot dogs because they were eating human corpses must learn what it is like to return to domestic life in suburbia, surrounded by people "who have no idea where Fallujah is, where three members of your platoon died." In "After Action Report", a Lance Corporal seeks expiation for a killing he didn''t commit, in order that his best friend will be unburdened. A Morturary Affairs Marine tells about his experiences collecting remains—of U.S. and Iraqi soldiers both. A chaplain sees his understanding of Christianity, and his ability to provide solace through religion, tested by the actions of a ferocious Colonel. And in the darkly comic "Money as a Weapons System", a young Foreign Service Officer is given the absurd task of helping Iraqis improve their lives by teaching them to play baseball. These stories reveal the intricate combination of monotony, bureaucracy, comradeship and violence that make up a soldier''s daily life at war, and the isolation, remorse, and despair that can accompany a soldier''s homecoming.', 'Penguin Press HC, The; First Edition edition', 1);
 
 INSERT INTO Author(AuthorName, BookId)
 VALUES('Phil Klay', @newId);

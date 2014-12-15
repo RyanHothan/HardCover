@@ -62,7 +62,7 @@ public class BookInfoServlet extends HttpServlet
             Statement st3 = con.createStatement();
             String query = "SELECT * "
                     + "FROM [HardCover].[dbo].[Book] "
-                    + "WHERE BookUuid = '" + bookId + "';";
+                    + "WHERE BookUuid = '" + bookId + "' AND Active = 1;";
 
             String query2 = "SELECT AuthorName "
                     + "FROM [HardCover].[dbo].[Author] "

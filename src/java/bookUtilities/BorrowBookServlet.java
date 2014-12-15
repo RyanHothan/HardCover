@@ -46,6 +46,28 @@ public class BorrowBookServlet extends HttpServlet
         String bookUuid = request.getParameter("bookUuid");
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
+        
+        try
+        {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
+            
+            Statement st = con.createStatement();
+            
+            String query = "SELECT Active "
+                    + "FROM [HardCover].[dbo].[Book] "
+                    + "WHERE BookUuid = '" + bookUuid + "'";
+            ResultSet isActive = st.executeQuery(query);
+            isActive.next();
+            if(!isActive.getBoolean("Active"))
+            {
+                response.sendError(502);
+            }
+        } catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
 
         if(!fixBookStatistics(bookUuid, request))
         {
@@ -67,6 +89,8 @@ public class BorrowBookServlet extends HttpServlet
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
+            
+            
             Statement st = con.createStatement();
             String query = "SELECT NumCopies "
                         +" FROM [HardCover].[dbo].[Book] "
@@ -93,11 +117,13 @@ public class BorrowBookServlet extends HttpServlet
     {
         try
         {
+            
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
+            
             String query = "SELECT * "
                     + "FROM [HardCover].[dbo].[CheckedOutBook] checkedBooks, [HardCover].[dbo].[Person] Person "
                     + "WHERE checkedBooks.BookId = '" + book + "' AND checkedBooks.RegisteredUserId = Person.PersonUuid AND Person.Email = '" + email + "'";
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
             Statement st = con.createStatement();
             ResultSet canNotBorrowBookTwice = st.executeQuery(query);
             if(canNotBorrowBookTwice.next())
