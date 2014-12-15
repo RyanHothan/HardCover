@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -63,6 +62,10 @@ public class LoginUserServlet extends HttpServlet
                 {
                     HttpSession session = request.getSession(true);
                     session.setAttribute("email", loginEmail);
+                    if(rs.getBoolean("isAdmin"))
+                    {
+                        session.setAttribute("isAdmin", true);
+                    }
                 }
             }
         } catch (Exception e)

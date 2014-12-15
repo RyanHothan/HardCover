@@ -186,7 +186,6 @@ function drawNewBookResults(pageNumber)
         });
         counter++;
 
-
     }
     if (i < 9)
     {
