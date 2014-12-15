@@ -17,10 +17,9 @@
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
         <script type='text/javascript' src='js/basic.js'></script>
-        <script type='text/javascript' src='js/basicreturn.js'></script>
-        <script type='text/javascript' src='js/passwordmodal.js'></script>
-        <script type='text/javascript' src='js/emailmodal.js'></script>
+        <script type='text/javascript' src='js/loginUser.js'></script> 
         <script type='text/javascript' src='js/logOut.js'></script>
+        <script type='text/javascript' src='js/populateMyBooks.js'></script>
         <link type='text/css' href='css/demo.css' rel='stylesheet' media='screen' />
 
         <!-- Contact Form CSS files -->
@@ -55,13 +54,25 @@
                 </div>
             </div>
 
-            <div class="row" id="myBooksRow">
-                
+            <div class="row" >
+                <table class="pure-table" id="myBooksRow" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Book
+                            </th>
+                            <th>
+                                Expiration Date
+                            </th>
+                            <th>
+                                Download Book
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
 
-    </div>
 
-</div>
 </body>
 </html>

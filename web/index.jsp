@@ -31,6 +31,7 @@
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/viewMore.js'></script>
         <script type='text/javascript' src='js/logOut.js'></script>
+        <script type='text/javascript' src='js/borrowBook.js'></script>
 
     </head>
     <body>

@@ -1000,7 +1000,7 @@ VALUES('Stieg Larsson', @newId);
 
 -- You need a new 1 for every author
 INSERT INTO Author(AuthorName, BookId)
-VALUES('Reg Keeland (Translator)', @newId);
+VALUES('Reg Keeland', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)

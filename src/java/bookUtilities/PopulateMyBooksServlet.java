@@ -21,18 +21,17 @@ import org.json.simple.JSONObject;
 
 /**
  *
- * @author Ryan Hothan
+ * @author Javier
  */
-@WebServlet(urlPatterns =
+@WebServlet(name = "PopulateMyBooksServlet", urlPatterns =
 {
-    "/HomePageBooksServlet"
+    "/PopulateMyBooksServlet"
 })
-public class HomePageBooksServlet extends HttpServlet
+public class PopulateMyBooksServlet extends HttpServlet
 {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -43,38 +42,38 @@ public class HomePageBooksServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        //Get the top four most recently added books
-        JSONArray newestBooks = getNewestBooks();
-        //Gets the top four most checked out books
-        getPopularBooks(newestBooks);
-        //Returns the data to the front end
+        String email;
+        email = (String)request.getSession().getAttribute("email");
+        JSONArray userBooks = getUserBooks(email);
         PrintWriter printout = response.getWriter();
-        printout.print(newestBooks);
+        printout.print(userBooks);
         printout.flush();
     }
 
-    private JSONArray getNewestBooks()
+    private JSONArray getUserBooks(String email)
     {
+        String query;
         JSONArray jsons = new JSONArray();
         try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
-
             Statement st = con.createStatement();
-
-            String query = "SELECT TOP 4 * "
-                    + "FROM [HardCover].[dbo].[Book] "
-                    + "ORDER BY DateAdded DESC;";
+              query = "SELECT Book.* "
+                    + "FROM [HardCover].[dbo].[Book] Book, [HardCover].[dbo].[RegisteredUser] RegisteredUser, [HardCover].[dbo].[CheckedOutBook] checkedBooks, [HardCover].[dbo].[Person] P "
+                    + "WHERE Book.BookUuid = checkedBooks.BookId AND checkedBooks.RegisteredUserId = RegisteredUser.RegisteredUserId AND P.PersonUuid = RegisteredUser.RegisteredUserId "
+                    + " AND P.Email = '" + email + "'";
 
             ResultSet rs = st.executeQuery(query);
-
-            while (rs.next())
+            /* TODO output your page here. You may use following sample code. */
+             while (rs.next())
             {
                 JSONObject bookToAdd = new JSONObject();
                 Statement st2 = con.createStatement();
+                
                 String bookId = rs.getString("BookUuid");
+                
                 query = "SELECT AuthorName "
                         + "FROM [HardCover].[dbo].[Author] "
                         + "WHERE BookId = '" + bookId + "';";
@@ -90,53 +89,13 @@ public class HomePageBooksServlet extends HttpServlet
                 bookToAdd.put("bookId", rs.getString("BookUuid"));
                 jsons.add(bookToAdd);
             }
-        } catch (Exception e)
+             
+        }
+        catch(Exception e)
         {
             System.out.println(e.getMessage());
         }
         return jsons;
-    }
-    
-    private void getPopularBooks(JSONArray jsons)
-    {
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-
-            Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
-
-            Statement st = con.createStatement();
-
-            String query = "SELECT TOP 4 * "
-                    + "FROM [HardCover].[dbo].[Book] "
-                    + "ORDER BY TimesBorrowed DESC;";
-
-            ResultSet rs = st.executeQuery(query);
-
-            while (rs.next())
-            {
-                JSONObject bookToAdd = new JSONObject();
-                String bookId = rs.getString("BookUuid");
-                Statement st2 = con.createStatement();
-                query = "SELECT AuthorName "
-                        + "FROM [HardCover].[dbo].[Author] "
-                        + "WHERE BookId = '" + bookId + "';";
-                ResultSet rs2 = st2.executeQuery(query);
-                rs2.next();
-                bookToAdd.put("author", rs2.getString("AuthorName"));
-                bookToAdd.put("title", rs.getString("Title"));
-                bookToAdd.put("cover", rs.getString("Cover"));
-                bookToAdd.put("language", rs.getString("BookLanguage"));
-                bookToAdd.put("description", rs.getString("BookDescription"));
-                bookToAdd.put("publisher", rs.getString("Publisher"));
-                bookToAdd.put("dateAdded", rs.getString("DateAdded"));
-                bookToAdd.put("bookId", rs.getString("BookUuid"));
-                jsons.add(bookToAdd);
-            }
-        } catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

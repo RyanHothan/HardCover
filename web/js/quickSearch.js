@@ -74,8 +74,8 @@ function populateSearch() {
                         + "<input id='booksSearchResult" + i + "'type='image' value='" + data[i].bookId + "' src='" + data[i].cover + "'  style='display:block; margin-left: auto; margin-right: auto'>"
                         + "</a>"
                         + "<div class='caption' style='position:absolute; bottom: 10px;'>"
-                        + "<h4 style ='color: white'>" + title + "</h4>"
-                        + "<p style ='color: white; font-size:14px'>" + data[i].author + "</p>"
+                        + "<h4>" + title + "</h4>"
+                        + "<p>" + data[i].author + "</p>"
                         + "</div>"
                         + "</div>"
                         + "</div>");

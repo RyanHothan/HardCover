@@ -9,9 +9,6 @@
             <li>
                 <a href="HardCover-browse.jsp">Browse</a>
             </li>
-            <li>
-                <a href="mybooks.jsp">My Books</a>
-            </li>
         </ul>
         <div class="col-md-4 pull-right">
             <div class="input-group">
