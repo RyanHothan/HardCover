@@ -63,6 +63,7 @@ public class BorrowBookServlet extends HttpServlet
             if(!isActive.getBoolean("Active"))
             {
                 response.sendError(502);
+                return;
             }
         } catch(Exception e)
         {

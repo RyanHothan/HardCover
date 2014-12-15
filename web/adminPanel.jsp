@@ -29,6 +29,7 @@
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/logOut.js'></script>
         <script type='text/javascript' src='js/adminPanelLoad.js'></script>
+        <script type='text/javascript' src='js/addBook.js'></script>
         <title>Administration Panel</title>
     </head>
     <body>
