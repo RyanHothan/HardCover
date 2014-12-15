@@ -12,6 +12,20 @@ jQuery(function () {
             }
         }
     });
+    
+    $.ajax({
+        url: '/HardCover/UserListServlet',
+        type: 'GET',
+        async: false,
+        dataType: 'JSON',
+        success: function (data)
+        {
+            for(i = 0; i < data.length; i++)
+            {
+                $("#listOfUsers").append("<option value=" + data[i].userId + ">" + data[i].libraryCardNumber + "</option>");
+            }
+        }
+    });
 });
 
 

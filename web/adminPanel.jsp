@@ -57,7 +57,7 @@
             </div>
             <div class='row'>
                 <div class='col-md-4' style='border-right: #eeeeee solid;border-width: 1px'>
-                    <a onclick='addNewBook()' class='btn btn-lg btn-primary'>Add Book</a>
+                    <a onclick='addBook()' class='btn btn-lg btn-primary'>Add Book</a>
                     <hr>
                     <h4 style=" color: white;">Title</h4>
                     <input id = "titleInput" style="color:white;background-color: black ">
@@ -80,6 +80,24 @@
                     <select id="listOfBooks" style="color:white;background-color: black">
                         <option value="" disabled selected>Select Book to Remove</option>
                     </select>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <a onclick='removeBook()' class='btn btn-lg btn-primary'>Remove User</a>
                     <hr>
                     <select id="listOfUsers" style="color:white;background-color: black">
