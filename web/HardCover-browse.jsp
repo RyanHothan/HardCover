@@ -27,6 +27,8 @@
         <script type='text/javascript' src='js/basic.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/advancedSearch.js'></script>
+        <script type='text/javascript' src='js/logOut.js'></script>
+        <script type='text/javascript' src='js/loginUser.js'></script>
         <script type='text/javascript' src='js/borrowBook.js'></script>
     </head>
     <body>
@@ -67,13 +69,6 @@
                         <h3>Availability</h3>
                         <h4><input id="availableCheckBox" type="checkbox" >Available Only<br></h4>
                     </div> 
-                    <div class="row">
-                        <h3> Format </h3>
-                        <h4><input type="checkbox" >.PDF File<br></h4>
-                        <h4><input type="checkbox" >EPUB File<br></h4>
-                        <h4><input type="checkbox" >AZW File<br></h4>
-                        <h4><input type="checkbox" >In Browser File<br></h4>
-                    </div>
                     <div class="row">
                         <a onclick ="advancedSearch()" class="btn btn-lg btn-primary">Submit</a>
                     </div>

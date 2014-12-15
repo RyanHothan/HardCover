@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-        
+
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -22,9 +22,11 @@
         <script type='text/javascript' src='js/populateMyBooks.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/changeAccountSettings.js'></script>
+        <script type='text/javascript' src='js/tabbing.js'></script>
 
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
+        <link type='text/css' href='css/tabbing.css' rel='stylesheet' media='screen' />
     </head>
     <body>
         <%@ include file="modals/bookModal.jsp" %>	
@@ -47,36 +49,64 @@
         </c:choose>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h1 style="color:white">My Books</h1>
+                <div class="col-md-8">
+                    <h1 style="color:white">My Account</h1>
                     <hr>
                 </div>
-                <div class="col" style="text-align:right ;color:white">
-                    <h3>Email :<c:out value="${email}"/></h3>
+                <div class = 'col-md-4'>
+                    <h3 style="color:white">Email: <c:out value="${email}"/></h3>
                     <h4><a href='#' id="changePassword">Change Password</a></h4>
                     <h4><a href='#' id="changeEmail">Change E-Mail</a></h4>
                 </div>
             </div>
-
+            <div class="row" style="color:white">
+                <div class = 'col-md-8'>
+                    <h2>My Books</h2>
+                </div>
+                <div class = 'col-md-4'>
+                    <h2>Reserved Books</h2>
+                </div>
+            </div>
             <div class="row" >
-                <table class="pure-table pure-table-horizontal" id="myBooksRow" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>
-                                Book
-                            </th>
-                            <th>
-                                Expiration Date
-                            </th>
-                            <th>
-                                Download Book
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
+                <div class="tabs">
+                    <ul class ="tab-links">
+                        <li class="active"><a href="#borrowedBooks">Borrowed Books </a></li>
+                        <li><a href="#reservedBooks">Reserved Books</a></li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                        <div class='tab active' id="borrowedBooks">
+                            <table class="pure-table pure-table-horizontal" id="myBooksRow" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Book
+                                        </th>
+                                        <th>
+                                            Expiration Date
+                                        </th>
+                                        <th>
+                                            Download Book
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class ='tab' id='reservedBooks'>
+                            <table class="pure-table pure-table-horizontal" id="myReservedBooksRow" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Book
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-
-
-</body>
+    </body>
 </html>

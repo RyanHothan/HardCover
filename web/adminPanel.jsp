@@ -28,6 +28,7 @@
         <script type='text/javascript' src='js/quickSearch.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/logOut.js'></script>
+        <script type='text/javascript' src='js/adminPanelLoad.js'></script>
         <title>Administration Panel</title>
     </head>
     <body>
@@ -42,6 +43,50 @@
                 <%@ include file="navBars/registeredUserNavigationBar.jsp" %>
             </c:otherwise>
         </c:choose>
-        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 style="color:white">Administration Control Panel</h1>
+                    <hr>
+                </div>
+                <div class = 'col-md-4'>
+                    <h3 style="color:white">Email: <c:out value="${email}"/></h3>
+                    <h4><a href='#' id="changePassword">Change Password</a></h4>
+                    <h4><a href='#' id="changeEmail">Change E-Mail</a></h4>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-md-4' style='border-right: #eeeeee solid;border-width: 1px'>
+                    <a onclick='addNewBook()' class='btn btn-lg btn-primary'>Add Book</a>
+                    <hr>
+                    <h4 style=" color: white;">Title</h4>
+                    <input id = "titleInput" style="color:white;background-color: black ">
+                    <h4 style=" color: white;">Authors</h4>
+                    <input id = "authorInput" style="color:white;background-color: black ">
+                    <h4 style=" color: white;">Cover Image URL</h4>
+                    <input id = "coverInput" style="color:white;background-color: black ">
+                    <h4 style=" color: white;">Publisher</h4>
+                    <input id = "publisherInput" style="color:white;background-color: black ">
+                    <h4 style=" color: white;">Genres</h4>
+                    <input id = "genreInput" style="color:white;background-color: black ">
+                    <h4 style=" color: white;">Language</h4>
+                    <input id = "languageInput" style="color:white;background-color: black ">
+                    <h4 style=" color: white;">Description</h4>
+                    <textarea  id = "descriptionInput" style="resize:none;color:white;background-color: black; height: 150px; width: 350px"></textarea>
+                </div>
+                <div class='col-md-8' style='border-right: #eeeeee solid;border-width: 1px'>
+                    <a onclick='removeBook()' class='btn btn-lg btn-primary'>Remove Book</a>
+                    <hr>
+                    <select id="listOfBooks" style="color:white;background-color: black">
+                        <option value="" disabled selected>Select Book to Remove</option>
+                    </select>
+                    <a onclick='removeBook()' class='btn btn-lg btn-primary'>Remove User</a>
+                    <hr>
+                    <select id="listOfUsers" style="color:white;background-color: black">
+                        <option value="" disabled selected>Select User to Remove</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

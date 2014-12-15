@@ -22,17 +22,18 @@ import org.json.simple.JSONObject;
 
 /**
  *
- * @author Javier
+ * @author Ryan Hothan
  */
-@WebServlet(name = "PopulateMyBooksServlet", urlPatterns =
+@WebServlet(name = "PopulateReservedBooksServlet", urlPatterns =
 {
-    "/PopulateMyBooksServlet"
+    "/PopulateReservedBooksServlet"
 })
-public class PopulateMyBooksServlet extends HttpServlet
+public class PopulateReservedBooksServlet extends HttpServlet
 {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -45,13 +46,13 @@ public class PopulateMyBooksServlet extends HttpServlet
         response.setContentType("text/html;charset=UTF-8");
         String email;
         email = (String)request.getSession().getAttribute("email");
-        JSONArray userBooks = getUserBooks(email);
+        JSONArray reservedBooks = getReservedBooks(email);
         PrintWriter printout = response.getWriter();
-        printout.print(userBooks);
+        printout.print(reservedBooks);
         printout.flush();
     }
 
-    private JSONArray getUserBooks(String email)
+    private JSONArray getReservedBooks(String email)
     {
         String query;
         JSONArray jsons = new JSONArray();
@@ -61,18 +62,17 @@ public class PopulateMyBooksServlet extends HttpServlet
 
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
             Statement st = con.createStatement();
-              query = "SELECT Book.*, checkedBooks.ExpirationDate "
-                    + "FROM [HardCover].[dbo].[Book] Book, [HardCover].[dbo].[RegisteredUser] RegisteredUser, [HardCover].[dbo].[CheckedOutBook] checkedBooks, [HardCover].[dbo].[Person] P "
-                    + "WHERE Book.BookUuid = checkedBooks.BookId AND checkedBooks.RegisteredUserId = RegisteredUser.RegisteredUserId AND P.PersonUuid = RegisteredUser.RegisteredUserId "
+              query = "SELECT Book.*, reservedBooks.ReserveDate "
+                    + "FROM [HardCover].[dbo].[Book] Book, [HardCover].[dbo].[RegisteredUser] RegisteredUser, [HardCover].[dbo].[ReservedBook] reservedBooks, [HardCover].[dbo].[Person] P "
+                    + "WHERE Book.BookUuid = reservedBooks.BookId AND reservedBooks.RegisteredUserId = RegisteredUser.RegisteredUserId AND P.PersonUuid = RegisteredUser.RegisteredUserId "
                     + " AND P.Email = '" + email + "'";
 
             ResultSet rs = st.executeQuery(query);
-            /* TODO output your page here. You may use following sample code. */
-             while (rs.next())
+            while (rs.next())
             {
                 JSONObject bookToAdd = new JSONObject();
                 Statement st2 = con.createStatement();
-                Timestamp timeStamp = rs.getTimestamp("ExpirationDate");
+                Timestamp timeStamp = rs.getTimestamp("ReserveDate");
                 String timeString = timeStamp.toString();
                 String bookId = rs.getString("BookUuid");
                 
@@ -82,11 +82,12 @@ public class PopulateMyBooksServlet extends HttpServlet
                         + "WHERE BookId = '" + bookId + "';";
                 ResultSet rs2 = st2.executeQuery(query);
                 rs2.next();
-                bookToAdd.put("expirationDate", timeString);
+                bookToAdd.put("reserveDate", timeString);
                 bookToAdd.put("author", rs2.getString("AuthorName"));
                 bookToAdd.put("title", rs.getString("Title"));
                 bookToAdd.put("cover", rs.getString("Cover"));
                 bookToAdd.put("dateAdded", rs.getString("DateAdded"));
+                bookToAdd.put("numCopies", rs.getString("NumCopies"));
                 bookToAdd.put("bookId", rs.getString("BookUuid"));
                 jsons.add(bookToAdd);
             }

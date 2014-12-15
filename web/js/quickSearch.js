@@ -83,7 +83,7 @@ function drawBookResults(pageNumber)
             author = author.substring(0, 17) + "...";
         }
         $("#booksSearchResultsRow" + rowNum).append(
-                "<div class='col-md-4' >"
+                "<div class='col-md-6' >"
                 + "<div class='thumbnail' >"
                 + "<a href='#'>"
                 + "<input class='basic' id='booksSearchResult" + counter + "'type='image' value='" + bookResults[i].bookId + "' src='" + bookResults[i].cover + "'  style='display:block; margin-left: auto; margin-right: auto'>"

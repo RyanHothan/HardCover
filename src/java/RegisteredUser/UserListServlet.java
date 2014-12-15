@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bookUtilities;
+package RegisteredUser;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,17 +21,18 @@ import org.json.simple.JSONObject;
 
 /**
  *
- * @author Javier
+ * @author Ryan Hothan
  */
-@WebServlet(name = "PopulateMyBooksServlet", urlPatterns =
+@WebServlet(name = "UserListServlet", urlPatterns =
 {
-    "/PopulateMyBooksServlet"
+    "/UserListServlet"
 })
-public class PopulateMyBooksServlet extends HttpServlet
+public class UserListServlet extends HttpServlet
 {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -43,60 +43,40 @@ public class PopulateMyBooksServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        String email;
-        email = (String)request.getSession().getAttribute("email");
-        JSONArray userBooks = getUserBooks(email);
+        JSONArray users = getUsers();
         PrintWriter printout = response.getWriter();
-        printout.print(userBooks);
+        printout.print(users);
         printout.flush();
     }
 
-    private JSONArray getUserBooks(String email)
+    private JSONArray getUsers()
     {
-        String query;
-        JSONArray jsons = new JSONArray();
+        JSONArray booksToReturn = new JSONArray();
         try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
+
             Statement st = con.createStatement();
-              query = "SELECT Book.*, checkedBooks.ExpirationDate "
-                    + "FROM [HardCover].[dbo].[Book] Book, [HardCover].[dbo].[RegisteredUser] RegisteredUser, [HardCover].[dbo].[CheckedOutBook] checkedBooks, [HardCover].[dbo].[Person] P "
-                    + "WHERE Book.BookUuid = checkedBooks.BookId AND checkedBooks.RegisteredUserId = RegisteredUser.RegisteredUserId AND P.PersonUuid = RegisteredUser.RegisteredUserId "
-                    + " AND P.Email = '" + email + "'";
+
+            String query = "SELECT * "
+                    + "FROM HardCover.dbo.Book ";
 
             ResultSet rs = st.executeQuery(query);
-            /* TODO output your page here. You may use following sample code. */
-             while (rs.next())
+            while (rs.next())
             {
                 JSONObject bookToAdd = new JSONObject();
-                Statement st2 = con.createStatement();
-                Timestamp timeStamp = rs.getTimestamp("ExpirationDate");
-                String timeString = timeStamp.toString();
-                String bookId = rs.getString("BookUuid");
-                
-                
-                query = "SELECT AuthorName "
-                        + "FROM [HardCover].[dbo].[Author] "
-                        + "WHERE BookId = '" + bookId + "';";
-                ResultSet rs2 = st2.executeQuery(query);
-                rs2.next();
-                bookToAdd.put("expirationDate", timeString);
-                bookToAdd.put("author", rs2.getString("AuthorName"));
-                bookToAdd.put("title", rs.getString("Title"));
-                bookToAdd.put("cover", rs.getString("Cover"));
-                bookToAdd.put("dateAdded", rs.getString("DateAdded"));
                 bookToAdd.put("bookId", rs.getString("BookUuid"));
-                jsons.add(bookToAdd);
+                bookToAdd.put("title", rs.getString("Title"));
+                booksToReturn.add(bookToAdd);
             }
-             
-        }
-        catch(Exception e)
+
+        } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
-        return jsons;
+        return booksToReturn;
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
