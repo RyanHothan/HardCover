@@ -114,7 +114,7 @@ public class BookSearchServlet extends HttpServlet
             {
                 String query = "SELECT * "
                         + "FROM [HardCover].[dbo].[Book] "
-                        + "ORDER BY TimesBorrowed;";
+                        + "ORDER BY TimesBorrowed DESC;";
 
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next())

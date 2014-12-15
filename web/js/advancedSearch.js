@@ -1,3 +1,4 @@
+var newBookResults;
 jQuery(function ($) {
     $("#filterDiv").keypress(function (e)
     {
@@ -23,7 +24,7 @@ jQuery(function ($) {
 });
 function advancedSearch()
 {
-
+    newBookResults = bookResults;
     window.location.hash = "A?";
     if (!($("#authorSearch").val() === ("")))
     {
@@ -43,13 +44,11 @@ function advancedSearch()
         }
         window.location.hash = window.location.hash + "?";
     }
-    if($("#availableCheckBox").prop('checked'))
+    if ($("#availableCheckBox").prop('checked'))
     {
         window.location.hash = window.location.hash + "avail=true?";
     }
-    $("#bookSearchResultsView").empty();
     var hash = window.location.hash;
-    var newBookResults = bookResults;
     if (hash.indexOf("+author=") >= 0)
     {
         var startOfAuthor = hash.indexOf("+author=") + 8;
@@ -118,24 +117,39 @@ function advancedSearch()
             newBookResults = tempBookList;
         }
     }
-    
-    if(hash.indexOf("avail=true") >=0)
+
+    if (hash.indexOf("avail=true") >= 0)
     {
         var tempBookList = [];
-        for(i = 0; i < newBookResults.length; i++)
+        for (i = 0; i < newBookResults.length; i++)
         {
-            if(newBookResults[i].numCopies > 0)
+            if (newBookResults[i].numCopies > 0)
             {
-                tempBookList.push(newBookResults[i]);   
+                tempBookList.push(newBookResults[i]);
             }
         }
         newBookResults = tempBookList;
     }
+
+    drawNewBookResults(0);
+}
+;
+
+function drawNewBookResults(pageNumber)
+{
+    $("#bookSearchResultsView").empty();
     var rowNum;
-    for (i = 0; i < newBookResults.length; i++)
+    var startNum = pageNumber * 9;
+    var numToList = 9;
+    if (startNum + numToList > newBookResults.length)
     {
-        rowNum = Math.floor(i / 3);
-        if (i % 3 === 0)
+        numToList = newBookResults.length - startNum;
+    }
+    var counter = 0;
+    for (i = startNum; i < startNum + numToList; i++)
+    {
+        rowNum = Math.floor(counter / 3);
+        if (counter % 3 === 0)
         {
             $("#bookSearchResultsView").append("<div id = 'booksSearchResultsRow" + rowNum + "' class='row'></div>");
         }
@@ -144,19 +158,24 @@ function advancedSearch()
         {
             title = title.substring(0, 17) + "...";
         }
+        var author = newBookResults[i].author;
+        if (author.length > 20)
+        {
+            author = author.substring(0, 17) + "...";
+        }
         $("#booksSearchResultsRow" + rowNum).append(
                 "<div class='col-md-4' >"
                 + "<div class='thumbnail' >"
-                + "<a href='#' class='basic'>"
-                + "<input id='booksSearchResult" + i + "'type='image' value='" + newBookResults[i].bookId + "' src='" + newBookResults[i].cover + "' style='display:block; margin-left: auto; margin-right: auto'>"
+                + "<a href='#'>"
+                + "<input class='basic' id='booksSearchResult" + counter + "'type='image' value='" + newBookResults[i].bookId + "' src='" + newBookResults[i].cover + "' style='display:block; margin-left: auto; margin-right: auto'>"
                 + "</a>"
                 + "<div class='caption' style='position:absolute; bottom: 10px;'>"
                 + "<h4 style ='color: white'>" + title + "</h4>"
-                + "<p style ='color: white; font-size:14px'>" + newBookResults[i].author + "</p>"
+                + "<p style ='color: white; font-size:14px'>" + author + "</p>"
                 + "</div>"
                 + "</div>"
                 + "</div>");
-        $("#booksSearchResult" + i).on('click', function ()
+        $("#booksSearchResult" + counter).on('click', function ()
         {
             populateModal($(this));
         });
@@ -168,5 +187,24 @@ function advancedSearch()
 
 
     }
+    if (i < 9)
+    {
+        return;
+    }
+    else if (pageNumber === 0 && i < newBookResults.length)
+    {
+        $("#bookSearchResultsView").append("<div id = 'pageRow' class='row'></div>");
+        $("#pageRow").append("<a onclick='drawNewBookResults(" + (pageNumber + 1) + ")' class='btn btn-lg btn-primary'>Next</a>");
+    }
+    else if (i === newBookResults.length)
+    {
+        $("#bookSearchResultsView").append("<div id = 'pageRow' class='row'></div>");
+        $("#pageRow").append("<a onclick='drawNewBookResults(" + (pageNumber - 1) + ")' class='btn btn-lg btn-primary'>Previous</a>");
+    }
+    else if (i < newBookResults.length)
+    {
+        $("#bookSearchResultsView").append("<div id = 'pageRow' class='row'></div>");
+        $("#pageRow").append("<a onclick='drawNewBookResults(" + (pageNumber - 1) + ")' class='btn btn-lg btn-primary'>Previous</a>");
+        $("#pageRow").append("<a onclick='drawNewBookResults(" + (pageNumber + 1) + ")' class='btn btn-lg btn-primary'>Next</a>");
+    }
 }
-;
