@@ -9,18 +9,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-              rel="stylesheet">
-        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
         <script type='text/javascript' src='js/basic.js'></script>
         <script type='text/javascript' src='js/loginUser.js'></script> 
         <script type='text/javascript' src='js/logOut.js'></script>
         <script type='text/javascript' src='js/populateMyBooks.js'></script>
-        <link type='text/css' href='css/demo.css' rel='stylesheet' media='screen' />
+        <script type='text/javascript' src='js/populateModal.js'></script>
+        <script type='text/javascript' src='js/changeAccountSettings.js'></script>
 
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
@@ -44,18 +45,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>My Books</h1>
+                    <h1 style="color:white">My Books</h1>
                     <hr>
                 </div>
-                <div class="col" style="text-align:right">
-                    <h3>Email : email.example.com</h3>
-                    <h4><a href='#' class='changepassword'>Change Password</a></h4>
-                    <h4><a href='#' class='changeemail'>Change E-Mail</a></h4>
+                <div class="col" style="text-align:right ;color:white">
+                    <h3>Email :<c:out value="${email}"/></h3>
+                    <h4><a href='#' id="changePassword">Change Password</a></h4>
+                    <h4><a href='#' id="changeEmail">Change E-Mail</a></h4>
                 </div>
             </div>
 
             <div class="row" >
-                <table class="pure-table" id="myBooksRow" style="width:100%">
+                <table class="pure-table pure-table-horizontal" id="myBooksRow" style="width:100%">
                     <thead>
                         <tr>
                             <th>

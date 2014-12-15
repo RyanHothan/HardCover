@@ -8,7 +8,7 @@
  *   http://www.opensource.org/licenses/mit-license.php
  */
 body{
-    background-image: url('../img/backgroundfix4_1.jpg');
+    background-image: url('../img/background.jpg');
     background-attachment: fixed;
     background-size: 100%;
     
@@ -51,7 +51,7 @@ body{
 #simplemodal-overlay {background-color:#000;}
 
 /* Container */
-#simplemodal-container {height:680px; width:900px; color:#bbb; background-color:#333; border:2px solid #444; padding:8px;}
+#simplemodal-container {height:680px; width:1000px; color:#bbb; background-color:#333; border:2px solid #444; padding:8px;}
 #simplemodal-container .simplemodal-data {padding:8px;}
 #simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;}
 #simplemodal-container a {color:#ddd;}

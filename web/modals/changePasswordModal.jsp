@@ -1,10 +1,21 @@
+
 <div id="change-password-modal">
-    <h3>Change Password</h3>
-    <h4>Enter Current Password:</h4>
-    <input type="password">
-    <h4>Enter New Password:</h4>
-    <input type="password">
-    <h4>Confirm New Password:</h4>
-    <input type="password"> <br /> <br />
-    <button>Submit</button>
+    <form class ="pure-form pure-form-aligned">
+        <h2 style="text-align: center">Change Password</h2>
+        <fieldset>
+            <div class="pure-control-group">
+                <h3>Enter Current Password:</h3>
+                <input type="password" placeholder="Current Password" id="currentPassword" style="width: 100%"/>
+            </div>
+            <div class="pure-control-group">
+                <h3>Enter New Password: </h3>
+                <input type="password" placeholder="New Password" id="passwordRepeat" style="width: 100%"/>
+            </div>
+            <div class="pure-control-group">
+                <h3>Confirm New Password:</h3>
+                <input type="password" placeholder="Confirm Password" id="newPassword" style="width: 100%"/>
+            </div>
+        </fieldset>
+        <button class ="pure-button pure-input-1-2 pure-button-primary"  onclick="changePassword()" id ="registerUserButton" style="width: 100%">Change Password</button>
+    </form>
 </div>

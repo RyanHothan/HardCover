@@ -18,11 +18,12 @@ jQuery(function ($) {
 
 		return false;
 	});
-        
+
         $('#registerButton').on('click', function (e) {
 		$('#basic-modal-register').modal({overlayClose:true,
                     containerCss:{
-                height:400,width: 300}});
+                height:400,
+                width: 300}});
 
 		return false;
 	});

@@ -3,32 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bookUtilities;
+package RegisteredUser;
 
+import BCrypt.BCrypt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Javier
  */
-@WebServlet(name = "PopulateMyBooksServlet", urlPatterns =
+@WebServlet(name = "ChangePasswordServlet", urlPatterns =
 {
-    "/PopulateMyBooksServlet"
+    "/ChangePasswordServlet"
 })
-public class PopulateMyBooksServlet extends HttpServlet
+public class ChangePasswordServlet extends HttpServlet
 {
 
     /**
@@ -43,64 +42,50 @@ public class PopulateMyBooksServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        String email;
-        email = (String)request.getSession().getAttribute("email");
-        JSONArray userBooks = getUserBooks(email);
-        PrintWriter printout = response.getWriter();
-        printout.print(userBooks);
-        printout.flush();
-    }
-
-    private JSONArray getUserBooks(String email)
-    {
-        String query;
-        JSONArray jsons = new JSONArray();
+        String password = request.getParameter("password");
+        String repeatPassword = request.getParameter("passwordRepeat");
+        String newPassword = request.getParameter("newPassword");
+        if(!repeatPassword.equals(newPassword))
+        {
+              PrintWriter printout = response.getWriter();
+            printout.print("false");
+            printout.flush();
+            return;
+        }
+        String email = (String) request.getSession().getAttribute("email");
         try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
-            Statement st = con.createStatement();
-              query = "SELECT Book.*, checkedBooks.ExpirationDate "
-                    + "FROM [HardCover].[dbo].[Book] Book, [HardCover].[dbo].[RegisteredUser] RegisteredUser, [HardCover].[dbo].[CheckedOutBook] checkedBooks, [HardCover].[dbo].[Person] P "
-                    + "WHERE Book.BookUuid = checkedBooks.BookId AND checkedBooks.RegisteredUserId = RegisteredUser.RegisteredUserId AND P.PersonUuid = RegisteredUser.RegisteredUserId "
-                    + " AND P.Email = '" + email + "'";
 
+            Statement st = con.createStatement();
+
+            String query = "SELECT * "
+                    + "FROM [HardCover].[dbo].[Person] "
+                    + "WHERE Email = '" + email + "'";
+            //see if email exists in database.
             ResultSet rs = st.executeQuery(query);
-            /* TODO output your page here. You may use following sample code. */
-             while (rs.next())
+            if (rs.next())
             {
-                JSONObject bookToAdd = new JSONObject();
-                Statement st2 = con.createStatement();
-                Timestamp timeStamp = rs.getTimestamp("ExpirationDate");
-                String timeString = timeStamp.toString();
-                String bookId = rs.getString("BookUuid");
-                
-                
-                query = "SELECT AuthorName "
-                        + "FROM [HardCover].[dbo].[Author] "
-                        + "WHERE BookId = '" + bookId + "';";
-                ResultSet rs2 = st2.executeQuery(query);
-                rs2.next();
-                bookToAdd.put("expirationDate", timeString);
-                bookToAdd.put("author", rs2.getString("AuthorName"));
-                bookToAdd.put("title", rs.getString("Title"));
-                bookToAdd.put("cover", rs.getString("Cover"));
-                bookToAdd.put("language", rs.getString("BookLanguage"));
-                bookToAdd.put("description", rs.getString("BookDescription"));
-                bookToAdd.put("publisher", rs.getString("Publisher"));
-                bookToAdd.put("dateAdded", rs.getString("DateAdded"));
-                bookToAdd.put("bookId", rs.getString("BookUuid"));
-                jsons.add(bookToAdd);
+                //then hash the password given and see if it matches the one we have stored.
+                String hashed = rs.getString("Password");
+                if (BCrypt.checkpw(password, hashed))
+                {
+                    //if everything checks out. hash new password and add to database.
+                    hashed = BCrypt.hashpw(newPassword, BCrypt.gensalt(12));
+                    query = "UPDATE [Hardcover].[dbo].[Person] "
+                            + "SET Password = '" + hashed + "' "
+                            +"WHERE Email = '" + email + "'";
+                    st.executeUpdate(query);
+                }
             }
-             
-        }
-        catch(Exception e)
+        } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
-        return jsons;
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

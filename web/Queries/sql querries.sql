@@ -608,7 +608,7 @@ VALUES('Fiction', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
-VALUES('Classics', @newId);
+VALUES('Classic', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
@@ -660,7 +660,7 @@ VALUES('Fiction', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
-VALUES('Classics', @newId);
+VALUES('Classic', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
@@ -859,7 +859,7 @@ VALUES('Jane Austen', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
-VALUES('Classics', @newId);
+VALUES('Classic', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
@@ -877,7 +877,7 @@ VALUES('Lilian Lee', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
-VALUES('Classics', @newId);
+VALUES('Classic', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
@@ -901,7 +901,7 @@ VALUES(' Charlotte Brontë', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
-VALUES('Classics', @newId);
+VALUES('Classic', @newId);
 
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
