@@ -17,17 +17,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Javier
  */
-@WebServlet(name = "LoginUserServlet", urlPatterns =
+@WebServlet(name = "ChangeEmailServlet", urlPatterns =
 {
-    "/LoginUserServlet"
+    "/ChangeEmailServlet"
 })
-public class LoginUserServlet extends HttpServlet
+public class ChangeEmailServlet extends HttpServlet
 {
 
     /**
@@ -42,8 +41,9 @@ public class LoginUserServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        String loginEmail = request.getParameter("loginEmail");
-        String loginPassword = request.getParameter("loginPassword");
+        String password = request.getParameter("password");
+        String newEmail = request.getParameter("newEmail");
+        String email = (String) request.getSession().getAttribute("email");
         try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -54,23 +54,33 @@ public class LoginUserServlet extends HttpServlet
 
             String query = "SELECT * "
                     + "FROM [HardCover].[dbo].[Person] "
-                    + "WHERE Email = '" + loginEmail + "'";
+                    + "WHERE Email = '" + email + "'";
+            //see if email exists in database.
             ResultSet rs = st.executeQuery(query);
             if (rs.next())
             {
                 String hashed = rs.getString("Password");
-                if (BCrypt.checkpw(loginPassword, hashed))
+                if (BCrypt.checkpw(password, hashed))
                 {
-                    HttpSession session = request.getSession(true);
-                    session.setAttribute("email", loginEmail);
-                    if (rs.getBoolean("isAdmin"))
+                    query = "SELECT * "
+                            + "FROM [HardCover].[dbo].[Person] "
+                            + "WHERE Email = '" + newEmail + "'";
+                    //this line checks to see if that email exists already.
+                    rs = st.executeQuery(query);
+                    if (rs.next())
                     {
-                        session.setAttribute("isAdmin", true);
+                        response.sendError(501);
+                        return;
                     }
-                } else
-                {
-                    response.sendError(500);
+                    query = "UPDATE [Hardcover].[dbo].[Person] "
+                            + "SET Email = '" + newEmail + "' "
+                            + "WHERE Email = '" + email + "'";
+                    st.executeUpdate(query);
+                    request.getSession().setAttribute("email", newEmail);
                 }
+            } else
+            {
+                response.sendError(500);
             }
         } catch (Exception e)
         {

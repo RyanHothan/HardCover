@@ -47,12 +47,20 @@ public class BorrowBookServlet extends HttpServlet
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
 
-        fixBookStatistics(bookUuid, request);
+        if(!fixBookStatistics(bookUuid, request))
+        {
+            response.sendError(501);
+            return;
+        }
         
-        updateCheckedOutBooks(email, bookUuid);
+        if(!updateCheckedOutBooks(email, bookUuid))
+        {
+            response.sendError(500);
+            return;
+        }
     }
 
-    protected void fixBookStatistics(String bookUuid, HttpServletRequest request)
+    protected boolean fixBookStatistics(String bookUuid, HttpServletRequest request)
     {
         try
         {
@@ -60,7 +68,16 @@ public class BorrowBookServlet extends HttpServlet
 
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
             Statement st = con.createStatement();
-            String query = "UPDATE [HardCover].[dbo].[Book] "
+            String query = "SELECT NumCopies "
+                        +" FROM [HardCover].[dbo].[Book] "
+                        +"WHERE BookUuid = '" + bookUuid + "'";
+            ResultSet NumberOfCopies = st.executeQuery(query);
+            NumberOfCopies.next();
+            if(NumberOfCopies.getInt("NumCopies") <= 0)
+            {
+                return false;
+            }
+             query = "UPDATE [HardCover].[dbo].[Book] "
                     + "SET NumCopies = NumCopies-1, TimesBorrowed = TimesBorrowed+1 "
                     + "WHERE BookUuid = '" + bookUuid + "'";
             st.executeUpdate(query);
@@ -69,16 +86,26 @@ public class BorrowBookServlet extends HttpServlet
         {
             System.out.println(e.getMessage());
         }
+        return true;
     }
 
-    protected void updateCheckedOutBooks(String email, String book)
+    protected boolean updateCheckedOutBooks(String email, String book)
     {
         try
         {
+            String query = "SELECT * "
+                    + "FROM [HardCover].[dbo].[CheckedOutBook] checkedBooks, [HardCover].[dbo].[Person] Person "
+                    + "WHERE checkedBooks.BookId = '" + book + "' AND checkedBooks.RegisteredUserId = Person.PersonUuid AND Person.Email = '" + email + "'";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
             Statement st = con.createStatement();
-            String query = "SELECT PersonUuid FROM [HardCover].[dbo].[Person] "
+            ResultSet canNotBorrowBookTwice = st.executeQuery(query);
+            if(canNotBorrowBookTwice.next())
+            {
+                return false;
+            }
+            
+            query = "SELECT PersonUuid FROM [HardCover].[dbo].[Person] "
                     + "WHERE email = '" + email + "'";
             ResultSet rs = st.executeQuery(query);
             rs.next();
@@ -95,6 +122,7 @@ public class BorrowBookServlet extends HttpServlet
         {
             System.out.println(e.getMessage());
         }
+        return true;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

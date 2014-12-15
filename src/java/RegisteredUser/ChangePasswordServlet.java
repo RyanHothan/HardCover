@@ -45,11 +45,9 @@ public class ChangePasswordServlet extends HttpServlet
         String password = request.getParameter("password");
         String repeatPassword = request.getParameter("passwordRepeat");
         String newPassword = request.getParameter("newPassword");
-        if(!repeatPassword.equals(newPassword))
+        if (!repeatPassword.equals(newPassword))
         {
-              PrintWriter printout = response.getWriter();
-            printout.print("false");
-            printout.flush();
+            response.sendError(500);
             return;
         }
         String email = (String) request.getSession().getAttribute("email");
@@ -76,8 +74,11 @@ public class ChangePasswordServlet extends HttpServlet
                     hashed = BCrypt.hashpw(newPassword, BCrypt.gensalt(12));
                     query = "UPDATE [Hardcover].[dbo].[Person] "
                             + "SET Password = '" + hashed + "' "
-                            +"WHERE Email = '" + email + "'";
+                            + "WHERE Email = '" + email + "'";
                     st.executeUpdate(query);
+                } else
+                {
+                    response.sendError(500);
                 }
             }
         } catch (Exception e)

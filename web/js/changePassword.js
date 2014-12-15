@@ -7,6 +7,15 @@ function changePassword()
         url: '/HardCover/ChangePasswordServlet',
         type: 'POST',
         data: {password: password, passwordRepeat : passwordRepeat, newPassword : newPassword},
-        dataType: 'text'
+        dataType: 'text',
+        async: false,
+        success: function(e)
+        {
+            alert('Password Change Successful!');
+        },
+        error: function()
+        {
+            alert('Password Change unsuccessful please try again');
+        }
     });
 }

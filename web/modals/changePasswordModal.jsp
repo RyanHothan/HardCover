@@ -1,4 +1,3 @@
-
 <div id="change-password-modal">
     <form class ="pure-form pure-form-aligned">
         <h2 style="text-align: center">Change Password</h2>

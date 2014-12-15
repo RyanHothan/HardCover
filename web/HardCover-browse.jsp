@@ -27,6 +27,7 @@
         <script type='text/javascript' src='js/basic.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/advancedSearch.js'></script>
+        <script type='text/javascript' src='js/borrowBook.js'></script>
     </head>
     <body>
 

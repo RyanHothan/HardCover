@@ -8,7 +8,10 @@ function loginUser()
         type: 'POST',
         data: {loginEmail: loginEmail, loginPassword: loginPassword},
         async: false,
-        dataType: 'text'
+        dataType: 'text',
+        error: function(e){
+        alert('Your email and Password combination are incorrect.');
+        }
     });
     
 }
