@@ -63,6 +63,7 @@ public class BookSearchServlet extends HttpServlet
             {
                 String query = "SELECT * "
                         + "FROM [HardCover].[dbo].[Book] "
+                        + "WHERE Active = 1 "
                         + "ORDER BY DateAdded DESC;";
 
                 ResultSet rs = st.executeQuery(query);
@@ -114,6 +115,7 @@ public class BookSearchServlet extends HttpServlet
             {
                 String query = "SELECT * "
                         + "FROM [HardCover].[dbo].[Book] "
+                        + "WHERE Active = 1 "
                         + "ORDER BY TimesBorrowed DESC;";
 
                 ResultSet rs = st.executeQuery(query);
@@ -167,9 +169,9 @@ public class BookSearchServlet extends HttpServlet
                         + "FROM HardCover.dbo.Book JOIN HardCover.dbo.Author "
                         + "ON HardCover.dbo.Book.BookUuid = HardCover.dbo.Author.BookId "
                         + "JOIN HardCover.dbo.Genre ON HardCover.dbo.Book.BookUuid = HardCover.dbo.Genre.BookId "
-                        + "WHERE FREETEXT((Title, Publisher, BookDescription, BookLanguage), '"
+                        + "WHERE (FREETEXT((Title, Publisher, BookDescription, BookLanguage), '"
                         + searchPhrase + "') OR FREETEXT(AuthorName,'" + searchPhrase
-                        + "') OR FREETEXT(Genre,'" + searchPhrase + "') "
+                        + "') OR FREETEXT(Genre,'" + searchPhrase + "')) AND Active = 1 "
                         + " ORDER BY Title;";
 
                 ResultSet rs = st.executeQuery(query);

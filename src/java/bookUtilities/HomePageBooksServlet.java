@@ -66,6 +66,7 @@ public class HomePageBooksServlet extends HttpServlet
 
             String query = "SELECT TOP 4 * "
                     + "FROM [HardCover].[dbo].[Book] "
+                    + "WHERE Active =1 "
                     + "ORDER BY DateAdded DESC;";
 
             ResultSet rs = st.executeQuery(query);
@@ -109,6 +110,7 @@ public class HomePageBooksServlet extends HttpServlet
 
             String query = "SELECT TOP 4 * "
                     + "FROM [HardCover].[dbo].[Book] "
+                    + "WHERE Active =1 "
                     + "ORDER BY TimesBorrowed DESC;";
 
             ResultSet rs = st.executeQuery(query);
