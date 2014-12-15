@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RegisteredUser;
+package bookUtilities;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,18 +16,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
  *
  * @author Ryan Hothan
  */
-@WebServlet(name = "UserListServlet", urlPatterns =
+@WebServlet(name = "AddBookServlet", urlPatterns =
 {
-    "/UserListServlet"
+    "/AddBookServlet"
 })
-public class UserListServlet extends HttpServlet
+public class AddBookServlet extends HttpServlet
 {
 
     /**
@@ -43,15 +42,19 @@ public class UserListServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        JSONArray users = getUsers();
+        JSONObject message = addBook(request.getParameter("title"), 
+                request.getParameter("cover"), request.getParameter("author"),
+                request.getParameter("genre"), request.getParameter("description"), request.getParameter("language"),
+                request.getParameter("publisher"));
         PrintWriter printout = response.getWriter();
-        printout.print(users);
+        printout.print(message);
         printout.flush();
     }
 
-    private JSONArray getUsers()
+    private JSONObject addBook(String title, String cover, String author, String genre, String description, String language, String publisher)
     {
-        JSONArray usersToReturn = new JSONArray();
+        
+        JSONObject messageToReturn = new JSONObject();
         try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -60,23 +63,16 @@ public class UserListServlet extends HttpServlet
 
             Statement st = con.createStatement();
 
-            String query = "SELECT * "
-                    + "FROM HardCover.dbo.RegisteredUser ";
+            String query = "INSERT INTO [HardCover].[dbo].[Book] (Title, Cover, DateAdded, NumCopies, TimesBorrowed, BookLanguage, BookDescription, Publisher, Active) "
+                    + "VALUES ('', '', '', 5, 0, '', '', '', 1);";
 
-            ResultSet rs = st.executeQuery(query);
-            while (rs.next())
-            {
-                JSONObject userToAdd = new JSONObject();
-                userToAdd.put("userId", rs.getString("RegisteredUserId"));
-                userToAdd.put("libraryCardNumber", rs.getString("LibraryCardNumber"));
-                usersToReturn.add(userToAdd);
-            }
+            st.executeUpdate(query);
 
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
-        return usersToReturn;
+        return messageToReturn;
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
