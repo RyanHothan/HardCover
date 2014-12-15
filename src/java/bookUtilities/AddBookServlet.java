@@ -67,7 +67,6 @@ public class AddBookServlet extends HttpServlet
             Statement st = con.createStatement();
             Calendar someDate = Calendar.getInstance();
             someDate.setTime(new Date());
-            someDate.add(Calendar.DATE, 10);
             Timestamp stamp = new Timestamp(someDate.getTimeInMillis());
             String query = "DECLARE @newId UNIQUEIDENTIFIER; "
                     + "SET @newid = NEWID(); "
