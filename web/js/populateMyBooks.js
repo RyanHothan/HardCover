@@ -43,7 +43,7 @@ function populateMyBooks()
                         + data[i].expirationDate.substring(0, 10)
                         + "</td>"
                         + "<td>"
-                        + "<button class='btn' style='background-color:white'> Download Book </button>"
+                        + "<a class='btn btn-lg btn-primary'>Download Book</a>"
                         + "</td>"
                         + "</tr>");
                 $("#myBookResult" + i).on('click', function ()

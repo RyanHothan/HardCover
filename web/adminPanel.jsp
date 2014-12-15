@@ -42,6 +42,22 @@
                 <%@ include file="navBars/registeredUserNavigationBar.jsp" %>
             </c:otherwise>
         </c:choose>
-        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 style="color:white">Administration Control Panel</h1>
+                    <hr>
+                </div>
+                <div class = 'col-md-4'>
+                    <h3 style="color:white">Email: <c:out value="${email}"/></h3>
+                    <h4><a href='#' id="changePassword">Change Password</a></h4>
+                    <h4><a href='#' id="changeEmail">Change E-Mail</a></h4>
+                </div>
+            </div>
+            <div class='row'>
+                <a onclick='addNewBook()' class='btn btn-lg btn-primary'>Add Book</a>
+                <a onclick='removeBook()' class='btn btn-lg btn-primary'>Remove Book</a>
+            </div>
+        </div>
     </body>
 </html>
