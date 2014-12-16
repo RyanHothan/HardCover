@@ -33,7 +33,10 @@
         <script type='text/javascript' src='js/removeBook.js'></script>
         <script type='text/javascript' src='js/removeUser.js'></script>
         <script type='text/javascript' src='js/promoteUser.js'></script>
-        
+        <script type='text/javascript' src='js/changeAccountSettings.js'></script>
+        <%@ include file="modals/changeEmailModal.jsp" %>
+        <%@ include file="modals/changePasswordModal.jsp" %>  
+
         <title>Administration Panel</title>
     </head>
     <body>
