@@ -29,9 +29,8 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li class="divider"></li>
                             <li>
-                                <input type="button" value="Log Out" onclick="logOut()">
+                                <input type="button" class ="btn" value="Log Out" onclick="logOut()" style="width:100%">
                             </li>
                         </ul>
                     </div>

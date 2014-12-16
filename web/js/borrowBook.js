@@ -16,7 +16,21 @@ function borrowBook(bookId)
             else
             if (e.status === 501)
             {
-                alert('That book is not available. Please reserve it to be placed in queue.');
+                var x = confirm('That book is not available. Please reserve it to be placed in queue.');
+                if(x === true)
+                {
+                    $.ajax({
+                        url: '/HardCover/ReserveBookServlet',
+                        type: 'POST',
+                        data: {bookUuid : bookUuid},
+                        async: false,
+                        dataType: 'text',
+                        success: function(data)
+                        {
+                            alert('You have successfully reserved' + data[0].title +".  Please look check your books regularly.");
+                        }
+                    })
+                }
             }
             else
             if (e.status === 502)

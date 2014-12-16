@@ -45,13 +45,17 @@ public class PopulateMyBooksServlet extends HttpServlet
         response.setContentType("text/html;charset=UTF-8");
         String email;
         email = (String)request.getSession().getAttribute("email");
-        JSONArray userBooks = getUserBooks(email);
+        JSONArray fileTypes = new JSONArray();
+        JSONArray userBooks = getUserBooks(email, fileTypes);
+        JSONArray infoToPush = new JSONArray();
+        infoToPush.add(userBooks);
+        infoToPush.add(fileTypes);
         PrintWriter printout = response.getWriter();
-        printout.print(userBooks);
+        printout.print(infoToPush);
         printout.flush();
     }
 
-    private JSONArray getUserBooks(String email)
+    private JSONArray getUserBooks(String email, JSONArray fileTypes)
     {
         String query;
         JSONArray jsons = new JSONArray();
@@ -64,14 +68,17 @@ public class PopulateMyBooksServlet extends HttpServlet
               query = "SELECT Book.*, checkedBooks.ExpirationDate "
                     + "FROM [HardCover].[dbo].[Book] Book, [HardCover].[dbo].[RegisteredUser] RegisteredUser, [HardCover].[dbo].[CheckedOutBook] checkedBooks, [HardCover].[dbo].[Person] P "
                     + "WHERE Book.BookUuid = checkedBooks.BookId AND checkedBooks.RegisteredUserId = RegisteredUser.RegisteredUserId AND P.PersonUuid = RegisteredUser.RegisteredUserId "
-                    + " AND P.Email = '" + email + "'";
+                    + " AND P.Email = '" + email + "' AND checkedBooks.Expired = 0";
 
             ResultSet rs = st.executeQuery(query);
             /* TODO output your page here. You may use following sample code. */
              while (rs.next())
             {
                 JSONObject bookToAdd = new JSONObject();
+                JSONObject fileTypeToAdd = new JSONObject();
+                JSONArray fileTypesArray = new JSONArray(); 
                 Statement st2 = con.createStatement();
+                Statement st3 = con.createStatement();
                 Timestamp timeStamp = rs.getTimestamp("ExpirationDate");
                 String timeString = timeStamp.toString();
                 String bookId = rs.getString("BookUuid");
@@ -82,12 +89,27 @@ public class PopulateMyBooksServlet extends HttpServlet
                         + "WHERE BookId = '" + bookId + "';";
                 ResultSet rs2 = st2.executeQuery(query);
                 rs2.next();
+                
+                query = "SELECT FileType, DownloadLink "
+                        + "FROM [HardCover].[dbo].[BookFileType] "
+                        + "WHERE BookId = '" + bookId + "'";
+                
+                ResultSet rs3 = st3.executeQuery(query);
+                while(rs3.next())
+                {
+                 
+                fileTypeToAdd.put("fileType", rs3.getString("FileType"));
+                fileTypeToAdd.put("downloadLink", rs3.getString("DownLoadLink"));
+                fileTypesArray.add(fileTypeToAdd);                
+                }
+                fileTypes.add(fileTypesArray);
                 bookToAdd.put("expirationDate", timeString);
                 bookToAdd.put("author", rs2.getString("AuthorName"));
                 bookToAdd.put("title", rs.getString("Title"));
                 bookToAdd.put("cover", rs.getString("Cover"));
                 bookToAdd.put("dateAdded", rs.getString("DateAdded"));
                 bookToAdd.put("bookId", rs.getString("BookUuid"));
+                
                 jsons.add(bookToAdd);
             }
              

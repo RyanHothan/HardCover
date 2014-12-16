@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 
     <head>
@@ -23,6 +23,7 @@
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/changeAccountSettings.js'></script>
         <script type='text/javascript' src='js/tabbing.js'></script>
+        <script type='text/javascript' src='js/cancelReservation.js'></script>
 
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
@@ -63,9 +64,6 @@
                 <div class = 'col-md-8'>
                     <h2>My Books</h2>
                 </div>
-                <div class = 'col-md-4'>
-                    <h2>Reserved Books</h2>
-                </div>
             </div>
             <div class="row" >
                 <div class="tabs">
@@ -76,7 +74,7 @@
                     
                     <div class="tab-content">
                         <div class='tab active' id="borrowedBooks">
-                            <table class="pure-table pure-table-horizontal" id="myBooksRow" style="width:100%">
+                            <table class="pure-table pure-table-horizontal" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>
@@ -90,17 +88,26 @@
                                         </th>
                                     </tr>
                                 </thead>
+                                <tbody id="myBooksRow">
+                                    
+                                </tbody>
                             </table>
                         </div>
-                        <div class ='tab' id='reservedBooks'>
-                            <table class="pure-table pure-table-horizontal" id="myReservedBooksRow" style="width:100%">
+                        <div class ='tab' id='reservedBooks' style="background-color: transparent">
+                            <table class="pure-table pure-table-horizontal"  style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>
                                             Book
                                         </th>
+                                        <th>
+                                            Cancel Reservation
+                                        </th>
                                     </tr>
                                 </thead>
+                                <tbody id="myReservedBooksRow">
+                                    
+                                </tbody>
                             </table>
                         </div>
                     </div>
