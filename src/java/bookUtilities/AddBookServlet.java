@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +45,7 @@ public class AddBookServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        JSONObject message = addBook(request.getParameter("title"), 
+        JSONObject message = addBook(request.getParameter("title"),
                 request.getParameter("cover"), request.getParameter("author"),
                 request.getParameter("genre"), request.getParameter("description"), request.getParameter("language"),
                 request.getParameter("publisher"));
@@ -53,7 +56,7 @@ public class AddBookServlet extends HttpServlet
 
     private JSONObject addBook(String title, String cover, String author, String genre, String description, String language, String publisher)
     {
-        
+
         JSONObject messageToReturn = new JSONObject();
         try
         {
@@ -62,18 +65,36 @@ public class AddBookServlet extends HttpServlet
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost;user=sa;password=nopw");
 
             Statement st = con.createStatement();
-
-            String query = "INSERT INTO [HardCover].[dbo].[Book] (Title, Cover, DateAdded, NumCopies, TimesBorrowed, BookLanguage, BookDescription, Publisher, Active) "
-                    + "VALUES ('', '', '', 5, 0, '', '', '', 1);";
-
+            Calendar someDate = Calendar.getInstance();
+            someDate.setTime(new Date());
+            Timestamp stamp = new Timestamp(someDate.getTimeInMillis());
+            String query = "DECLARE @newId UNIQUEIDENTIFIER; "
+                    + "SET @newid = NEWID(); "
+                    + "INSERT INTO [HardCover].[dbo].[Book] "
+                    + "VALUES (@newid, '" + title + "', '" + cover + "', '" + stamp
+                    + "', 5, 0, '" + language + "', '" + description + "', '"
+                    + publisher + "', 1); ";
+            String[] authors = author.split(", ");
+            String[] genres = genre.split(", ");
+            for (String s : authors)
+            {
+                query += "INSERT INTO [HardCover].[dbo].[Author] (AuthorName, BookId)"
+                        + "VALUES('" + s + "', @newid); ";
+            }
+            for (String s : genres)
+            {
+                query += "INSERT INTO [HardCover].[dbo].[Genre] (Genre, BookId)"
+                        + "VALUES('" + s + "', @newid); ";
+            }
             st.executeUpdate(query);
-
+            messageToReturn.put("message", "success");
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
         return messageToReturn;
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
