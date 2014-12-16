@@ -30,6 +30,10 @@
         <script type='text/javascript' src='js/logOut.js'></script>
         <script type='text/javascript' src='js/adminPanelLoad.js'></script>
         <script type='text/javascript' src='js/addBook.js'></script>
+        <script type='text/javascript' src='js/removeBook.js'></script>
+        <script type='text/javascript' src='js/removeUser.js'></script>
+        <script type='text/javascript' src='js/promoteUser.js'></script>
+        
         <title>Administration Panel</title>
     </head>
     <body>
@@ -99,7 +103,8 @@
                     <br>
                     <br>
                     <br>
-                    <a onclick='removeBook()' class='btn btn-lg btn-primary'>Remove User</a>
+                    <a onclick='removeUser()' class='btn btn-lg btn-primary'>Remove User</a>
+                    <a onclick='promoteUser()' class='btn btn-lg btn-primary'>Promote User</a>
                     <hr>
                     <select id="listOfUsers" style="color:white;background-color: black">
                         <option value="" disabled selected>Select User to Remove</option>
