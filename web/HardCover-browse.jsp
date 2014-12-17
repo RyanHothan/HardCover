@@ -15,7 +15,6 @@
         <meta name="author" content="">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link type='text/css' href='css/demo.css' rel='stylesheet' media='screen' />
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
 

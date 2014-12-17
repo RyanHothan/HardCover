@@ -51,6 +51,7 @@ body{
 
 /* Overlay */
 #simplemodal-overlay {background-color:#000;}
+h3 {color:#3a6d8c; font-size:22px; line-height:26px; font-weight:normal; margin:0 0 8px 0;}
 
 /* Container */
 #simplemodal-container {height:680px; width:1000px; color:#bbb; background-color:#333; border:2px solid #444; padding:8px;}
