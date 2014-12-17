@@ -4,6 +4,7 @@ function returnBook(returnBookButton)
     $.ajax({
         url:'/HardCover/ReturnBookServlet',
         type:'POST',
+        async: false,
         data: {bookId : bookId},
         error: function(e)
         {
@@ -11,6 +12,10 @@ function returnBook(returnBookButton)
             {
                 alert('You do not have that book checked out.');
             }
+        },
+        success: function(){
+            alert('You have returned the book.');
+            window.location.reload();
         }
     })
 }
