@@ -23,6 +23,7 @@ function populateModal(book)
             $("#modalLanguage").html("Language: " + language);
             $("#modalGenres").html("Genres: " + genres);
             $("#modalCopies").html("Number of Copies: " + numCopies);
+            $("#returnBook").data('data-bookUuid', bookId);
             window.location.hash = bookId;
         }
     });

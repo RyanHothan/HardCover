@@ -15,7 +15,6 @@
         <meta name="author" content="">
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link type='text/css' href='css/demo.css' rel='stylesheet' media='screen' />
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
 
@@ -27,9 +26,13 @@
         <script type='text/javascript' src='js/basic.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/advancedSearch.js'></script>
+        
+        <script type='text/javascript' src='js/loginUser.js'></script>
+        <script type='text/javascript' src='js/registerUser.js'></script>
         <script type='text/javascript' src='js/logOut.js'></script>
         <script type='text/javascript' src='js/loginUser.js'></script>
         <script type='text/javascript' src='js/borrowBook.js'></script>
+        <script type='text/javascript' src='js/returnBook.js'></script>
     </head>
     <body>
 
