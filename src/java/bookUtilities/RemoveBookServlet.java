@@ -3,35 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RegisteredUser;
+package bookUtilities;
 
-import BCrypt.BCrypt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import org.json.simple.JSONObject;
 
 /**
  *
- * @author Javier
+ * @author Ryan Hothan
  */
-@WebServlet(name = "LoginUserServlet", urlPatterns =
+@WebServlet(name = "RemoveBookServlet", urlPatterns =
 {
-    "/LoginUserServlet"
+    "/RemoveBookServlet"
 })
-public class LoginUserServlet extends HttpServlet
+public class RemoveBookServlet extends HttpServlet
 {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -42,15 +44,17 @@ public class LoginUserServlet extends HttpServlet
             throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        String loginEmail = request.getParameter("loginEmail");
-        String loginPassword = request.getParameter("loginPassword");
-        verifyLogin(loginEmail, loginPassword, request, response);
-
-
+        JSONObject message = removeBook(request.getParameter("bookId"));
+        PrintWriter printout = response.getWriter();
+        printout.print(message);
+        printout.flush();
     }
-    private void verifyLogin(String loginEmail, String loginPassword, HttpServletRequest request, HttpServletResponse response)
+
+    private JSONObject removeBook(String bookId)
     {
-                try
+        JSONObject messageToReturn = new JSONObject();
+        
+        try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
@@ -58,30 +62,18 @@ public class LoginUserServlet extends HttpServlet
 
             Statement st = con.createStatement();
 
-            String query = "SELECT * "
-                    + "FROM [HardCover].[dbo].[Person] "
-                    + "WHERE Email = '" + loginEmail + "'";
-            ResultSet rs = st.executeQuery(query);
-            if (rs.next())
-            {
-                String hashed = rs.getString("Password");
-                if (BCrypt.checkpw(loginPassword, hashed))
-                {
-                    HttpSession session = request.getSession(true);
-                    session.setAttribute("email", loginEmail);
-                    if (rs.getBoolean("isAdmin"))
-                    {
-                        session.setAttribute("isAdmin", true);
-                    }
-                } else
-                {
-                    response.sendError(500);
-                }
-            }
+            String query = "UPDATE HardCover.dbo.Book "
+                    + "SET Active = 0 "
+                    + "WHERE BookUuid = '" + bookId + "';";
+
+            st.executeUpdate(query);
+            messageToReturn.put("message", "success");
         } catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
+        return messageToReturn;
+        
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

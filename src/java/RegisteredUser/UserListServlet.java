@@ -61,7 +61,8 @@ public class UserListServlet extends HttpServlet
             Statement st = con.createStatement();
 
             String query = "SELECT * "
-                    + "FROM HardCover.dbo.RegisteredUser ";
+                    + "FROM HardCover.dbo.RegisteredUser "
+                    + "WHERE Active = 1;";
 
             ResultSet rs = st.executeQuery(query);
             while (rs.next())
