@@ -7,7 +7,7 @@
         <p id = "modalLanguage" ></p>
         <p id = "modalCopies" ></p>
         <p id = "modalPublisher" ></p>
-        <div class = "col-md-6"> <button class ="btn btn-default" type="button">Return Book</button> </div>
+        <div class = "col-md-6"> <button class ="btn btn-default" type="button" id ="returnBook"  onclick="returnBook(this)">Return Book</button> </div>
         <button class ="btn btn-default" type="button" onclick="borrowBook(document.location.hash)">Borrow Book</button>
     </div>
     <div class="col-md-8">

@@ -75,7 +75,7 @@ public class PopulateMyBooksServlet extends HttpServlet
              while (rs.next())
             {
                 JSONObject bookToAdd = new JSONObject();
-                JSONObject fileTypeToAdd = new JSONObject();
+                
                 JSONArray fileTypesArray = new JSONArray(); 
                 Statement st2 = con.createStatement();
                 Statement st3 = con.createStatement();
@@ -96,8 +96,8 @@ public class PopulateMyBooksServlet extends HttpServlet
                 
                 ResultSet rs3 = st3.executeQuery(query);
                 while(rs3.next())
-                {
-                 
+                {              
+                    JSONObject fileTypeToAdd = new JSONObject();
                 fileTypeToAdd.put("fileType", rs3.getString("FileType"));
                 fileTypeToAdd.put("downloadLink", rs3.getString("DownLoadLink"));
                 fileTypesArray.add(fileTypeToAdd);                

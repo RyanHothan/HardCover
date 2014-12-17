@@ -27,9 +27,13 @@
         <script type='text/javascript' src='js/basic.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/advancedSearch.js'></script>
+        
+        <script type='text/javascript' src='js/loginUser.js'></script>
+        <script type='text/javascript' src='js/registerUser.js'></script>
         <script type='text/javascript' src='js/logOut.js'></script>
         <script type='text/javascript' src='js/loginUser.js'></script>
         <script type='text/javascript' src='js/borrowBook.js'></script>
+        <script type='text/javascript' src='js/returnBook.js'></script>
     </head>
     <body>
 

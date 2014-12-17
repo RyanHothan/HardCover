@@ -37,6 +37,11 @@ function borrowBook(bookId)
             {
                alert('That book is no longer available.');
             }
+            else
+                if(e.status === 503)
+            {
+                alert('You must be signed in to borrow a book.');
+            }
 
 
         },

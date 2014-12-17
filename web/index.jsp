@@ -7,6 +7,7 @@
         <%@ include file="modals/changeEmailModal.jsp" %>
         <%@ include file="modals/changePasswordModal.jsp" %>     
         <%@ include file="modals/registerModal.jsp" %>
+        <%@ include file="modals/privacyStatementModal.jsp" %>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ page session="true" %>
         <title>HardCover eLibrary</title>
@@ -22,14 +23,18 @@
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script type='text/javascript' src='js/jquery.simplemodal.js'></script>
         <script type='text/javascript' src='js/registerUser.js'></script>
-        <script type='text/javascript' src='js/loginUser.js'></script>
+        <!--LOGIN AND LOGOUT -->
+        <script type='text/javascript' src='js/loginUser.js'></script>       
+        <script type='text/javascript' src='js/logOut.js'></script>
+        
+        
         <script type='text/javascript' src='js/basic.js'></script>
         <script type='text/javascript' src='js/homePageBooks.js'></script>
         <script type='text/javascript' src='js/quickSearch.js'></script>
         <script type='text/javascript' src='js/populateModal.js'></script>
         <script type='text/javascript' src='js/viewMore.js'></script>
-        <script type='text/javascript' src='js/logOut.js'></script>
         <script type='text/javascript' src='js/borrowBook.js'></script>
+        <script type='text/javascript' src='js/returnBook.js'></script>
 
     </head>
     <body>
@@ -167,8 +172,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <hr>
-                        <p>HardCover eLibrary Solutions
-                            <span class="fa fa-copyright"></span>2014</p>
+                        <p style='color:white'>HardCover eLibrary Solutions
+                            <span class="fa fa-copyright"></span> 2014
+                            <a href='#' id = 'privacyStatement'>Privacy Statement</a>
+                            <a href='#' id = 'aboutUs'>About Us</a>
+                        </p>
                     </div>
                 </div>
             </div>

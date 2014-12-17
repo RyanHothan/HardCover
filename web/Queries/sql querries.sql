@@ -1014,9 +1014,329 @@ VALUES('Mystery', @newId);
 -- You need a new 1 for every genre.
 INSERT INTO Genre(Genre, BookId)
 VALUES('Thriller', @newId);
+--dragon tattoo
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.megafileupload.com/en/file/588735/The-Girl-with-the-Dragon-Tattoo-pdf.html', '78ebf2d7-db20-4ff8-b800-b86bf59c1228')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.megafileupload.com/en/file/588735/The-Girl-with-the-Dragon-Tattoo-pdf.html', '78ebf2d7-db20-4ff8-b800-b86bf59c1228')
+
+--divergent
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.megafileupload.com/en/file/588736/Divergent-pdf.html', '5f3289a5-45de-42ff-8bbb-a354c3f8ebfa')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.megafileupload.com/en/file/588736/Divergent-pdf.html', '5f3289a5-45de-42ff-8bbb-a354c3f8ebfa')
 
 
+--age of ambition
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63458', '59609072-1A03-4BC4-BA9D-CEB2484B61E6')
 
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63458', '59609072-1A03-4BC4-BA9D-CEB2484B61E6')
+
+
+--all of the light
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63459', '8527699D-AE7F-45F3-980E-43AD594C55C4')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63459', '8527699D-AE7F-45F3-980E-43AD594C55C4')
+
+--allegient
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63460', 'BF912969-4EFB-4557-9DD8-E34F58069782')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63461', 'BF912969-4EFB-4557-9DD8-E34F58069782')
+
+--bossypants
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63461', 'BF912969-4EFB-4557-9DD8-E34F58069782')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63461', 'BF912969-4EFB-4557-9DD8-E34F58069782')
+
+--animal farm
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63461', '1EE8EA56-24DE-4E1D-92D7-431279637C9B')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63461', '1EE8EA56-24DE-4E1D-92D7-431279637C9B')
+
+--a long way down
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63462', '1DF7CE15-850A-435A-8A42-A7D649129803')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63462', '1DF7CE15-850A-435A-8A42-A7D649129803')
+
+
+--blue is for nightmare
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63464', '1DF7CE15-850A-435A-8A42-A7D649129803')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63464', 'A6C3C24B-3D48-4064-95A0-00596D9DA14F')
+
+--brown girl
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63465', 'A68CA332-B412-409B-9F47-142411588FF8')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63465', 'A68CA332-B412-409B-9F47-142411588FF8')
+
+--close to home
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63466', '7917F276-5BD2-4232-90D1-E4A4D475ED3F')
+
+--dinosaur
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63466', '7917F276-5BD2-4232-90D1-E4A4D475ED3F')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63467', '1783EE31-CD91-4D01-BA3B-DFED19504C4C')
+
+--eleanor
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63468', '75B4AA6C-B0F9-44B5-A9A0-E6B0EB371D52')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63468', '75B4AA6C-B0F9-44B5-A9A0-E6B0EB371D52')
+
+--emma
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63471', '7521D48C-4078-4185-9800-8983E9465AED')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63471', '7521D48C-4078-4185-9800-8983E9465AED')
+
+--virtuous
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63472', '4880F4AD-E244-436E-8202-70E78D251759')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63472', '4880F4AD-E244-436E-8202-70E78D251759')
+
+--farewell
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63473', 'E2BDC0D2-E31B-4185-B4D6-53EC5DD88932')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63473', 'E2BDC0D2-E31B-4185-B4D6-53EC5DD88932')
+
+--got
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63474', '20C4AD65-3A50-4448-8897-3877E433A12C')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63474', '20C4AD65-3A50-4448-8897-3877E433A12C')
+
+--hacks
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63475', 'B7739221-FE1C-44FF-A689-C5DF728CA269')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63475', 'B7739221-FE1C-44FF-A689-C5DF728CA269')
+
+--dragon
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63478', '743E265D-7E82-4523-AB12-B52FC72B71FF')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63478', '743E265D-7E82-4523-AB12-B52FC72B71FF')
+
+--insurgent
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63479', '67CC88E1-F4F0-4DB1-8B5E-946040CCEFB1')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63479', '67CC88E1-F4F0-4DB1-8B5E-946040CCEFB1')
+
+--hanging out
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63480', '1A447879-DFB2-4866-A8D7-7750BA000AA4')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63480', '1A447879-DFB2-4866-A8D7-7750BA000AA4')
+
+
+--jane
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63481', '3783DA33-DC81-41E3-A635-6EB8ECE0F26D')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63481', '3783DA33-DC81-41E3-A635-6EB8ECE0F26D')
+
+--little elliot
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63482', '65C49582-9EC3-48D8-9B06-C6FA21718788')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63482', '65C49582-9EC3-48D8-9B06-C6FA21718788')
+
+--lord
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63484', '2ABBFD3D-E3F2-4D9E-8834-59355A1C0445')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63484', '2ABBFD3D-E3F2-4D9E-8834-59355A1C0445')
+
+--mean streak
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63485', '1D89030B-1012-40C1-9CFF-5EC697BF98B0')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63485', '1D89030B-1012-40C1-9CFF-5EC697BF98B0')
+
+--dalloway
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63486', '7AA4A79B-50F2-4C83-B148-08FE998DFBF2')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63486', '7AA4A79B-50F2-4C83-B148-08FE998DFBF2')
+
+--mice and men
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63487', '67FF0EEF-4D53-459F-8FE8-8E91C3263EC5')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63487', '67FF0EEF-4D53-459F-8FE8-8E91C3263EC5')
+
+--outlander
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63488', '9C100947-83E9-4A67-AC32-A0D96DDBFCE6')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63488', '9C100947-83E9-4A67-AC32-A0D96DDBFCE6')
+
+--redeployment
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63489', '9408B00E-8C48-41BD-96EE-D33F512D7880')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63489', '9408B00E-8C48-41BD-96EE-D33F512D7880')
+
+--sunday
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63490', '26A2218B-B459-4D1E-853A-2A02FE3D3C8E')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63490', '26A2218B-B459-4D1E-853A-2A02FE3D3C8E')
+
+--alchemist
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63491', '3AA705F6-84B8-46E2-9405-3A6382AE82CA')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63491', '3AA705F6-84B8-46E2-9405-3A6382AE82CA')
+
+--striped pajama
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63492', 'C0BC6448-B3DD-4F76-AA07-39B1AAB83D8E')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63492', 'C0BC6448-B3DD-4F76-AA07-39B1AAB83D8E')
+
+--casual vacancy
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63493', '42FB828A-0373-41A1-8986-0A39F2C7D0E0')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63493', '42FB828A-0373-41A1-8986-0A39F2C7D0E0')
+
+--catcher
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63494', 'A2C3F0CD-78CF-4A34-9D76-CFC441327B6D')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63494', 'A2C3F0CD-78CF-4A34-9D76-CFC441327B6D')
+
+--cuckoo
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63495', 'AED6079B-8DC7-47D8-8C25-8EFF5F97DF2B')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63495', 'AED6079B-8DC7-47D8-8C25-8EFF5F97DF2B')
+
+--fault
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63496', 'EF55276B-F9C7-4BAD-B11E-ACF5D12AC1D5')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63496', 'EF55276B-F9C7-4BAD-B11E-ACF5D12AC1D5')
+
+--fear and other
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63497', '7AB43503-8F2E-4872-A769-61FB373C4E07')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63497', '7AB43503-8F2E-4872-A769-61FB373C4E07')
+
+--the giver
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63499', '1F28D7C8-5545-4D3C-B260-C6A510F2158C')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63499', '1F28D7C8-5545-4D3C-B260-C6A510F2158C')
+
+--the great gatsby
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63500', '067275F1-6448-4913-9522-AC5ACC405E6A')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63500', '067275F1-6448-4913-9522-AC5ACC405E6A')
+
+--the maze runner
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63501', 'C09A4F3A-8426-4F66-BE5E-3D1C8818E613')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63501', 'C09A4F3A-8426-4F66-BE5E-3D1C8818E613')
+
+--meta
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63502', '4B183D29-4FC0-48B8-BDF1-C1E828C6CE48')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63502', '4B183D29-4FC0-48B8-BDF1-C1E828C6CE48')
+
+--paper
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63503', '1B2F4E0D-D377-48CA-8D6D-EC5296933761')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63503', '1B2F4E0D-D377-48CA-8D6D-EC5296933761')
+
+--paper
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63503', '1B2F4E0D-D377-48CA-8D6D-EC5296933761')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63503', '1B2F4E0D-D377-48CA-8D6D-EC5296933761')
+
+--paper
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63503', '1B2F4E0D-D377-48CA-8D6D-EC5296933761')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63503', '1B2F4E0D-D377-48CA-8D6D-EC5296933761')
+
+--paper
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63504', '836E0A78-B212-43C2-B122-818963C71C7D')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63504', '836E0A78-B212-43C2-B122-818963C71C7D')
+
+--modern
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.pdf', 'http://www.freeuploadsite.com/do.php?id=63505', 'F0D76364-0C81-4AC0-AE57-39403BF0140B')
+
+INSERT INTO BookFileType(FileType, DownloadLink, BookId)
+VALUES('.epub', 'http://www.freeuploadsite.com/do.php?id=63505', 'F0D76364-0C81-4AC0-AE57-39403BF0140B')
 
 
 

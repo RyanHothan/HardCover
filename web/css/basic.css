@@ -47,6 +47,8 @@ body{
 #basic-modal-content-return {display:none;}
 #change-password-modal{display:none;}
 #change-email-modal{display:none;}
+#basic-modal-privacyStatement{display:none;}
+
 /* Overlay */
 #simplemodal-overlay {background-color:#000;}
 

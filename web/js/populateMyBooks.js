@@ -56,9 +56,10 @@ function populateMyBooks()
                     else
                     {
                         $("#bookRow" + i).find("#download").append(
-                                "<br><br><br><a class='btn btn-lg btn-primary' href='" + data[1][i][j].downloadLink + "'>Download Book</a>");
+                                "<br><br><br><a class='btn btn-lg btn-primary' href='" + data[1][i][j].downloadLink + "'>Download " + data[1][i][j].fileType +"</a>");
                     }
                 }
+                j=0;
                 
                 
                 $("#myBookResult" + i).on('click', function ()

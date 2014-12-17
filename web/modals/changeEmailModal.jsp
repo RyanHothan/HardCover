@@ -6,11 +6,11 @@
         <fieldset>
             <div class="pure-control-group">
                 <h3>New Email: </h3>
-                <input type="text" placeholder="New Email" id= "newEmail" style="width: 100%"/>
+                <input type="text" placeholder="New Email" id= "newEmail" style="width: 100%;color:black"/>
             </div>
             <div class="pure-control-group">
                 <h3>Enter Current Password:</h3>
-                <input type="password" placeholder="Current Password" id= "currentPasswordForEmailChange" style="width: 100%"/>
+                <input type="password" placeholder="Current Password" id= "currentPasswordForEmailChange" style="width: 100%;color:black"/>
             </div>
         </fieldset>
         <button class ="pure-button pure-input-1-2 pure-button-primary"  onclick="changeEmail()" id ="registerUserButton" style="width: 100%">Change Email</button>

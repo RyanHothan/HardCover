@@ -46,7 +46,11 @@ public class BorrowBookServlet extends HttpServlet
         String bookUuid = request.getParameter("bookUuid");
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
-
+        if(email == null)
+        {
+            response.sendError(503);
+            return;
+        }
         try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

@@ -24,6 +24,7 @@
         <script type='text/javascript' src='js/changeAccountSettings.js'></script>
         <script type='text/javascript' src='js/tabbing.js'></script>
         <script type='text/javascript' src='js/cancelReservation.js'></script>
+        <script type='text/javascript' src='js/returnBook.js'></script>
 
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
@@ -93,7 +94,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class ='tab' id='reservedBooks' style="background-color: transparent">
+                        <div class ='tab' id='reservedBooks'>
                             <table class="pure-table pure-table-horizontal"  style="width:100%">
                                 <thead>
                                     <tr>
