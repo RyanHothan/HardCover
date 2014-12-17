@@ -73,6 +73,10 @@ public class LoginUserServlet extends HttpServlet
                     {
                         session.setAttribute("isAdmin", true);
                     }
+                    else
+                    {
+                      session.setAttribute("isAdmin", false);   
+                    }
                 } else
                 {
                     response.sendError(500);
