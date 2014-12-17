@@ -25,6 +25,7 @@
         <script type='text/javascript' src='js/tabbing.js'></script>
         <script type='text/javascript' src='js/cancelReservation.js'></script>
         <script type='text/javascript' src='js/returnBook.js'></script>
+        <script type='text/javascript' src='js/borrowBook.js'></script>
 
         <!-- Contact Form CSS files -->
         <link type='text/css' href='css/basic.css' rel='stylesheet' media='screen' />
