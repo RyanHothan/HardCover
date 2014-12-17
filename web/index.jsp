@@ -8,6 +8,7 @@
         <%@ include file="modals/changePasswordModal.jsp" %>     
         <%@ include file="modals/registerModal.jsp" %>
         <%@ include file="modals/privacyStatementModal.jsp" %>
+        <%@ include file="modals/aboutStatementModal.jsp" %>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ page session="true" %>
         <title>HardCover eLibrary</title>
@@ -174,7 +175,7 @@
                         <p style='color:white'>HardCover eLibrary Solutions
                             <span class="fa fa-copyright"></span> 2014
                             <a href='#' id = 'privacyStatement'>Privacy Statement</a>
-                            <a href='#' id = 'aboutUs'>About Us</a>
+                            <a href='#' id = 'aboutStatement'>About Us</a>
                         </p>
                     </div>
                 </div>

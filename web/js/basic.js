@@ -37,7 +37,7 @@ jQuery(function ($) {
     $('#privacyStatement').on('click', function (e) {
         $('#basic-modal-privacyStatement').modal({overlayClose: true,
             containerCss: {
-                height:600,
+                height: 600,
                 width: 500
             }
         });
@@ -45,5 +45,15 @@ jQuery(function ($) {
         return false;
     });
 
+    $('#aboutStatement').on('click', function (e) {
+        $('#basic-modal-aboutStatement').modal({overlayClose: true,
+            containerCss: {
+                height: 400,
+                width: 500
+            }
+        });
+
+        return false;
+    });
 
 });
