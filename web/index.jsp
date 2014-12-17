@@ -131,7 +131,7 @@
                         </a>
                         <div class="caption" style='position:absolute; bottom: 10px;'>
                             <h4 id = "popularBookTitle1" ></h4>
-                            <p id = "popularBookAuthor1" '></p>
+                            <p id = "popularBookAuthor1"></p>
                         </div>
                     </div>
                 </div>
