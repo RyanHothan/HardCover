@@ -8,7 +8,7 @@ function addBook()
             data: {title: $("#titleInput").val(), author:$("#authorInput").val(),
                     cover:$("#coverInput").val(), publisher:$("#publisherInput").val(),
                     genre:$("#genreInput").val(), language:$("#languageInput").val(),
-                    description:$("#descriptionInput").val()},
+                    description:$("#descriptionInput").val(), file:$("#fileInput").val()},
     success: function (data)
     {
         location.reload();

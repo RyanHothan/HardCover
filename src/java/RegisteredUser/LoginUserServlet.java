@@ -44,7 +44,13 @@ public class LoginUserServlet extends HttpServlet
         response.setContentType("text/html;charset=UTF-8");
         String loginEmail = request.getParameter("loginEmail");
         String loginPassword = request.getParameter("loginPassword");
-        try
+        verifyLogin(loginEmail, loginPassword, request, response);
+
+
+    }
+    private void verifyLogin(String loginEmail, String loginPassword, HttpServletRequest request, HttpServletResponse response)
+    {
+                try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
@@ -76,9 +82,7 @@ public class LoginUserServlet extends HttpServlet
         {
             System.out.println(e.getMessage());
         }
-
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

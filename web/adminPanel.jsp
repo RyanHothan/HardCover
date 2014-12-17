@@ -73,6 +73,8 @@
                     <input id = "authorInput" style="color:white;background-color: black ">
                     <h4 style=" color: white;">Cover Image URL</h4>
                     <input id = "coverInput" style="color:white;background-color: black ">
+                    <h4 style=" color: white;">File URL</h4>
+                    <input id = "fileInput" style="color:white;background-color: black ">
                     <h4 style=" color: white;">Publisher</h4>
                     <input id = "publisherInput" style="color:white;background-color: black ">
                     <h4 style=" color: white;">Genres</h4>

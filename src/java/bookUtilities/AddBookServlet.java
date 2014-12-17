@@ -48,13 +48,13 @@ public class AddBookServlet extends HttpServlet
         JSONObject message = addBook(request.getParameter("title"),
                 request.getParameter("cover"), request.getParameter("author"),
                 request.getParameter("genre"), request.getParameter("description"), request.getParameter("language"),
-                request.getParameter("publisher"));
+                request.getParameter("publisher"), request.getParameter("file"));
         PrintWriter printout = response.getWriter();
         printout.print(message);
         printout.flush();
     }
 
-    private JSONObject addBook(String title, String cover, String author, String genre, String description, String language, String publisher)
+    private JSONObject addBook(String title, String cover, String author, String genre, String description, String language, String publisher, String fileURL)
     {
 
         JSONObject messageToReturn = new JSONObject();
@@ -76,6 +76,7 @@ public class AddBookServlet extends HttpServlet
                     + publisher + "', 1); ";
             String[] authors = author.split(", ");
             String[] genres = genre.split(", ");
+            String[] files = fileURL.split(", ");
             for (String s : authors)
             {
                 query += "INSERT INTO [HardCover].[dbo].[Author] (AuthorName, BookId)"
@@ -85,6 +86,11 @@ public class AddBookServlet extends HttpServlet
             {
                 query += "INSERT INTO [HardCover].[dbo].[Genre] (Genre, BookId)"
                         + "VALUES('" + s + "', @newid); ";
+            }
+            for (String s : files)
+            {
+                query += "INSERT INTO [HardCover].[dbo].[BookFileType] (FileType, DownloadLink, BookId)"
+                        + "VALUES('pdf', '" + s + "', @newid); ";
             }
             st.executeUpdate(query);
             messageToReturn.put("message", "success");
